@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package rvfeedaggregator;
+
+option java_multiple_files = true;
+option java_package = "com.meesho.ml.feedaggregator.rvclient.grpc.dtos";
+option go_package = "../grpc/rv";
+
+
+message RecentlyViewedRequest {
+  string cursor = 1;
+  int32 offset = 2;
+  int32 limit = 3;
+  int32 sscatId = 4;
+  string feed_context = 5;
+}
+
+message RvInteractionsFeedRequest {
+  int32 limit = 1;
+  int32 sscatId = 2;
+}
