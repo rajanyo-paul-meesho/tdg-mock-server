@@ -18,4 +18,7 @@ message RecentlyViewedRequest {
 message RvInteractionsFeedRequest {
   int32 limit = 1;
   int32 sscatId = 2;
+  string cursor = 3;
+  string feed_context = 4;
+  int32 productId = 5;
 }
