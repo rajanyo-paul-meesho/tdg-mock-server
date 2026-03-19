@@ -1,0 +1,59 @@
+syntax = "proto3";
+package clpiop;
+
+option java_package = "com.meesho.ml.clpiop.client.grpc.dtos";
+option go_package = "../grpc/clp-iop";
+
+import "google/protobuf/any.proto";
+
+message AnyVal {
+  map<string, google.protobuf.Any> fields = 1;
+}
+
+message FilterSet {
+  repeated FilterList filterList = 1;
+}
+
+message FilterList {
+  repeated Filter filters = 1;
+}
+
+message Filter {
+  string Field = 1;
+  string Op = 2;
+  repeated string Values = 3;
+}
+
+message GetClpFeedRequest {
+  string userId = 1;
+  int32 clpId = 2;
+  int32 limit = 3;
+  string cursor = 4;
+  string session = 5;
+  string sortBy = 6;
+  string sortOrder = 7;
+  bool selectedSortOption = 8;
+  repeated int32 catalogSchedulingStatuses = 9;
+  FilterSet feedFilters = 10;
+  FilterSet appliedFilters = 11;
+  FilterSet appliedFiltersDefinition = 12;
+  string rankingExperimentType = 13;
+  string feedGSTType = 14;
+  bool IsProductRequired = 15;
+  map<string, string> feedGenerationContexts = 16;
+  AnyVal context = 17;
+  string origin = 18;
+  string feedContext = 19;
+}
+
+message GetClpOrganicFeedRequest {
+  GetClpFeedRequest feedRequest = 1;
+}
+
+message GetClpCtFeedRequest {
+  GetClpFeedRequest feedRequest = 1;
+}
+
+message GetClpAdFeedRequest {
+  GetClpFeedRequest feedRequest = 1;
+}

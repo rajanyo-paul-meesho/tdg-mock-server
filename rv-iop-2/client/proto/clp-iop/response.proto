@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package clpiop;
+
+option java_package = "com.meesho.ml.clpiop.client.grpc.dtos";
+option go_package = "../grpc/clp-iop";
+
+message CandidateItem {
+  int64 id = 1;
+  string cursor = 2;
+  CandidateMeta meta = 3;
+}
+
+message CandidateMeta {
+  string trackingId = 1;
+  string subTenant = 2;
+  map<string, string> scores = 3;
+  string productId = 4;
+  map<string, string> sse = 5;
+}
+
+message GetClpFeedResponse {
+  repeated CandidateItem candidates = 1;
+  string session = 2;
+  bool hasNextCatalog = 3;
+  repeated int32 slots = 4;
+}
+
+message GetClpOrganicFeedResponse {
+  GetClpFeedResponse feedResponse = 1;
+}
+
+message GetClpCtFeedResponse {
+  GetClpFeedResponse feedResponse = 1;
+}
+
+message GetClpAdFeedResponse {
+  GetClpFeedResponse feedResponse = 1;
+}
+
+message GetComponentsResponse {
+  repeated ComponentInfo components = 1;
+}
+
+message ComponentInfo {
+  string name = 1;
+  string source = 2;
+}

@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+option java_package = "com.meesho.ml.fyiop.client.grpc.dtos";
+option go_package = "../grpc/fy-iop";
+
+import "google/protobuf/any.proto";
+
+
+
+message AnyVal {
+  map<string, google.protobuf.Any> fields = 1;
+}
+
+message FilterSet {
+  repeated FilterList filterList = 1;
+}
+
+message FilterList {
+  repeated Filter filters = 1;
+}
+
+message Filter {
+  string Field = 1;
+  string Op = 2;
+  repeated string Values = 3;
+}
+
+message GetFYFeedRequest {
+  string userId = 1;
+  int32 limit = 2;
+  string cursor = 3;
+  string session = 4;
+  string sortBy = 5;
+  string sortOrder = 6;
+  repeated int32 catalogSchedulingStatuses = 7;
+  FilterSet feedFilters = 8;
+  FilterSet appliedFilters = 9;
+  AnyVal context = 10;
+  string origin = 11;
+  string feedContext = 12;
+  bool refresh = 13;
+}
+
+message GetFYOrganicFeedRequest {
+  GetFYFeedRequest feedRequest = 1;
+}
+
+message GetFYCtFeedRequest {
+  GetFYFeedRequest feedRequest = 1;
+}
+
+message GetFYAdFeedRequest {
+  GetFYFeedRequest feedRequest = 1;
+}

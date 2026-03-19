@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option java_package = "com.meesho.ml.pdpiop.client.grpc.dtos";
+option go_package = "../../grpc/pdp-iop";
+
+message GetSimilarEntityOrganicFeedRequest {
+  GetSimilarEntityFeedRequest request = 1;
+}
+
+message GetSimilarEntityCtFeedRequest {
+  GetSimilarEntityFeedRequest request = 1;
+}
+
+message GetSimilarEntityAdFeedRequest {
+  GetSimilarEntityFeedRequest request = 1;
+}
+
+message GetSimilarEntityFeedRequest {
+  RequestData data = 1;
+}
+
+message RequestData {
+  int32  parentEntityId = 1;
+  string parentEntityType = 2;
+  string feedContext = 3;
+  string cursor = 4;
+  int32  limit = 5;
+  map<string, string> meta = 6;
+  int32 subSubCategoryId = 7;
+}

@@ -1,0 +1,12 @@
+app:
+  name: ${APP_NAME}
+  env: ${APP_ENV}
+  port: ${APP_PORT}
+  log-level: ${APP_LOG_LEVEL}
+  metric-sampling-rate: ${APP_METRIC_SAMPLING_RATE}
+external-service:
+  ab:
+    host: ${AB_HOST}
+    port: ${AB_PORT}
+    auth: ${AB_AUTH}
+    read-timeout-in-ms: ${AB_READ_TIMEOUT_IN_MS} # in milliseconds

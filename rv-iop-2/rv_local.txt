@@ -1,0 +1,309 @@
+{
+  "response": {
+    "data": {
+      "tenantContext": "organic",
+      "similarCandidates": [
+        {
+          "id": 200628100,
+          "metadata": {
+            "context": {
+              "product_id": "565902738",
+              "sscat_id": "1044",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 285103896,
+          "metadata": {
+            "context": {
+              "product_id": "687580437",
+              "sscat_id": "1007",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 302786998,
+          "metadata": {
+            "context": {
+              "product_id": "710181361",
+              "sscat_id": "4014",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 188661517,
+          "metadata": {
+            "context": {
+              "product_id": "545022688",
+              "sscat_id": "1062",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 224303844,
+          "metadata": {
+            "context": {
+              "product_id": "603728269",
+              "sscat_id": "3706",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 256943407,
+          "metadata": {
+            "context": {
+              "product_id": "649999023",
+              "sscat_id": "4021",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 308854678,
+          "metadata": {
+            "context": {
+              "product_id": "717842212",
+              "sscat_id": "1094",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 218328125,
+          "metadata": {
+            "context": {
+              "product_id": "594637251",
+              "sscat_id": "5921",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 228201575,
+          "metadata": {
+            "context": {
+              "product_id": "609555376",
+              "sscat_id": "1041",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 208002151,
+          "metadata": {
+            "context": {
+              "product_id": "577981674",
+              "sscat_id": "3080",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 205970535,
+          "metadata": {
+            "context": {
+              "product_id": "574769850",
+              "sscat_id": "1391",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 220022699,
+          "metadata": {
+            "context": {
+              "product_id": "597199604",
+              "sscat_id": "5942",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 163452289,
+          "metadata": {
+            "context": {
+              "product_id": "499781903",
+              "sscat_id": "2669",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 38356660,
+          "metadata": {
+            "context": {
+              "product_id": "130354309",
+              "sscat_id": "2662",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 315804322,
+          "metadata": {
+            "context": {
+              "product_id": "727040715",
+              "sscat_id": "2639",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 311638076,
+          "metadata": {
+            "context": {
+              "product_id": "721357495",
+              "sscat_id": "4022",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 172415326,
+          "metadata": {
+            "context": {
+              "product_id": "516203675",
+              "sscat_id": "1004",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 182906491,
+          "metadata": {
+            "context": {
+              "product_id": "535306948",
+              "sscat_id": "2294",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 111218523,
+          "metadata": {
+            "context": {
+              "product_id": "382044480",
+              "sscat_id": "1645",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 258142019,
+          "metadata": {
+            "context": {
+              "product_id": "651454940",
+              "sscat_id": "2530",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 308419183,
+          "metadata": {
+            "context": {
+              "product_id": "717304433",
+              "sscat_id": "1866",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 127171129,
+          "metadata": {
+            "context": {
+              "product_id": "428554820",
+              "sscat_id": "3709",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 131553673,
+          "metadata": {
+            "context": {
+              "product_id": "439490522",
+              "sscat_id": "1260",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 132460863,
+          "metadata": {
+            "context": {
+              "product_id": "441448668",
+              "sscat_id": "5662",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 242515117,
+          "metadata": {
+            "context": {
+              "product_id": "630330245",
+              "sscat_id": "1138",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 192497961,
+          "metadata": {
+            "context": {
+              "product_id": "552175109",
+              "sscat_id": "2370",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 197097854,
+          "metadata": {
+            "context": {
+              "product_id": "560007997",
+              "sscat_id": "2680",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 96235925,
+          "metadata": {
+            "context": {
+              "product_id": "331136959",
+              "sscat_id": "2330",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 147851448,
+          "metadata": {
+            "context": {
+              "product_id": "473108570",
+              "sscat_id": "2893",
+              "sscat_name": ""
+            }
+          }
+        },
+        {
+          "id": 116911852,
+          "metadata": {
+            "context": {
+              "product_id": "399039085",
+              "sscat_id": "2172",
+              "sscat_name": ""
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package feedcommon;
+
+import "feedcommonresponse/CatalogViewSchema.proto";
+
+option go_package = "../feedcommonresponse";
+
+message MetaData {
+    string cursor = 1;
+}
+
+message FeedResponse {
+  repeated Entity entities = 1;
+  MetaData metadata = 2;
+}
+
+message Entity {
+  oneof entity {
+    CatalogView catalog_view = 1;
+    ReelViewSchema reel_view = 2;
+  }
+}
+
+message ReelViewSchema {
+  CatalogView catalog_view = 1; // composition
+  ReelData reel_data = 2;
+}
+
+// Minimal ReelData schema for PDP v2. Mirrors older PDP/FY schemas where relevant.
+message ReelData {
+    int32 id = 1;
+    Tracker tracker = 2;
+    Video video = 3;
+    CatalogInfo hero_catalog = 4;
+    repeated CatalogInfo catalog_info = 5;
+    string user_name = 6;
+    string category = 7;
+    string feed_type = 8;
+    int32 like_count = 9;
+    string profile_image_url = 10;
+    string gif = 11;
+}
+
+message Tracker {
+    string tracker_id = 1;
+    bool is_product_result = 2;
+}
+
+message Video {
+    string video_url = 1;
+    string thumb_nail_webp = 2;
+}
+
+message CatalogInfo {
+    int32 id = 1;
+    int32 hero_pid = 2;
+}

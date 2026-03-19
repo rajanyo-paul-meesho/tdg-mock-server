@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option go_package = "../../grpc/pdp-iop";
+
+
+option java_multiple_files = true;
+option java_package = "com.meesho.ml.pdpiop.client.grpc.services";
+
+import "pdp-iop-grpc/request.proto";
+import "pdp-iop-grpc/response.proto";
+
+service PdpIopService {
+  rpc FetchExploitSimilarEntityFeed (GetSimilarEntityOrganicFeedRequest) returns (GetSimilarEntityOrganicFeedResponse) {}
+  rpc FetchExploreSimilarEntityFeed (GetSimilarEntityCtFeedRequest) returns (GetSimilarEntityCtFeedResponse) {}
+  rpc FetchAdSimilarEntityFeed (GetSimilarEntityAdFeedRequest) returns (GetSimilarEntityAdFeedResponse) {}
+}

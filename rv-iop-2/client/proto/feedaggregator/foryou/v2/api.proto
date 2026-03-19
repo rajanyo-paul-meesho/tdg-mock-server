@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option go_package = "../v2";
+
+import "foryou/v2/request.proto";
+import "foryou/v2/response.proto";
+
+service FyFeedHandlerV2 {
+  rpc FetchForYouFeedV2 (request.ForYouFeedRequestV2) returns (foryou.v2.ForYouFeedResponseV2) {}
+}

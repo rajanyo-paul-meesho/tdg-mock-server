@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package pdpfeedaggregator;
+
+option java_multiple_files = true;
+option java_package = "com.meesho.ml.feedaggregator.pdpclient.grpc.services";
+option go_package = "../pdp";
+
+
+import "feedaggregator/pdp/request.proto";
+import "feedaggregator/pdp/response.proto";
+
+service PdpFeedHandler {
+  rpc FetchPdpFeed (pdpfeedaggregator.RecommendationsRequest) returns (pdpfeedaggregator.RecommendationResponse) {}
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+package proto;
+option java_package = "com.meesho.ml.candidategenerator.dropoutnetservice.common.protogenerator";
+option java_outer_classname = "EntityProto";
+option go_package = ".;dropoutnet";
+
+
+import "google/protobuf/wrappers.proto";
+
+message Tracking {
+  google.protobuf.StringValue id = 1;
+  google.protobuf.DoubleValue score = 2;
+}
+
+message Entity {
+  google.protobuf.Int64Value id = 1;
+  Tracking tracking = 2;
+}

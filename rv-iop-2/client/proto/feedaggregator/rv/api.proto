@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package rvfeedaggregator;
+
+option java_multiple_files = true;
+option java_package = "com.meesho.ml.feedaggregator.rvclient.grpc.services";
+option go_package = "../grpc/rv";
+
+
+import "feedaggregator/rv/request.proto";
+import "feedaggregator/rv/response.proto";
+
+service RvFeedHandler {
+  rpc FetchRvFeed (rvfeedaggregator.RecentlyViewedRequest) returns (rvfeedaggregator.RecentlyViewedResponse) {}
+}

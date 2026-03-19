@@ -1,0 +1,30 @@
+syntax = "proto3";
+package request;
+
+option go_package = "../v2";
+
+message ForYouFeedRequestV2 {
+  string cursor = 1;
+  int32 offset = 2;
+  int32 limit = 3;
+  string feed_context = 4;
+  FilterV2 filter = 5;
+  int64 collection_id = 6;
+  string origin = 7;
+  bool refresh = 8;
+}
+
+message FilterV2 {
+  repeated string selected_filters = 1;
+  string type = 2;
+  SortOptionV2 sort_option = 3;
+  string session_state = 4;
+}
+
+message SortOptionV2 {
+  string sort_by = 1;
+  string display_name = 2;
+  string sort_order = 3;
+  bool selected = 4;
+  bool default = 5;
+}

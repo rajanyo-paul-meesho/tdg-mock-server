@@ -1,0 +1,67 @@
+---
+app_name: rv-iop-web
+app_port: 8080
+bu: demand
+service_type:
+  - grpc
+appConfigEnabled: true
+environment:
+  dev:
+    appMetrics: false
+    as_enabled: true
+    as_max: 100
+    as_min: 2
+    cpu_limit: 4
+    cpu_request: 2
+    deployment_args: false
+    deploymentStrategy: rollingUpdate
+    memory_limit: 8G
+    memory_request: 4500M
+  int:
+    appMetrics: false
+    as_enabled: true
+    as_max: 100
+    as_min: 2
+    cpu_limit: 4
+    cpu_request: 2
+    deployment_args: false
+    command: /app/server
+    deploymentStrategy: rollingUpdate
+    memory_limit: 8G
+    memory_request: 4500M
+  prd:
+    appMetrics: true
+    as_enabled: true
+    as_max: 100
+    as_min: 2
+    cpu_limit: 4
+    cpu_request: 2
+    deployment_args: false
+    command: /app/server
+    deploymentStrategy: canary
+    enableManualPromotion: true
+    minCanaryReplicas: 3
+    maxCanaryReplicas: 15
+    memory_limit: 2G
+    memory_request: 1G
+  stg:
+    appMetrics: false
+    as_enabled: true
+    as_max: 100
+    as_min: 2
+    cpu_limit: 4
+    cpu_request: 2
+    deployment_args: false
+    command: /app/server
+    deploymentStrategy: rollingUpdate
+    memory_limit: 8G
+    memory_request: 4500M
+health_check: /health
+initialDelaySeconds: 60
+module: rviopweb
+primary_owner: sakshi.gupta@meesho.com
+priority: p0
+priority_v2: up1
+replica_count: 1
+secondary_owner: shreyans.borad@meesho.com
+team: discovery-ranking

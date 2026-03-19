@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package foryou.v2;
+
+import "feedcommonresponse/response.proto";
+
+option go_package = "../v2";
+
+message ForYouFeedResponseV2 {
+  feedcommon.FeedResponse feed_response = 1;
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+import "fy-iop/request.proto";
+import "fy-iop/response.proto";
+import "google/protobuf/empty.proto";
+
+
+option java_multiple_files = true;
+option go_package = "../grpc/fy-iop";
+option java_package = "com.meesho.ml.fyiop.client.grpc.services";
+
+service FyIopFeedService {
+  rpc GetFyExploitFeed(GetFYOrganicFeedRequest) returns (GetFYOrganicFeedResponse);
+  rpc GetFyExploreFeed(GetFYCtFeedRequest) returns (GetFYCtFeedResponse);
+  rpc GetFyAdFeed(GetFYAdFeedRequest) returns (GetFYAdFeedResponse);
+  rpc GetComponents(google.protobuf.Empty) returns (GetComponentsResponse);
+}

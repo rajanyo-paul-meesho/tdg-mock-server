@@ -1,0 +1,20 @@
+arch: amd64
+bu: demand
+build_tool: docker
+deployArgo: true
+deployment_order:
+  - rv-iop-grpc-web
+  - rv-iop-test
+dockerBuildVersion: go-1.25
+excludedModules:
+  - null
+maintainer: discovery-ranking@meesho.com
+modules:
+  - rviopweb:
+      kafka: true
+  - rviopgrpcweb:
+      kafka: true
+notify_channel: canary-status-ranking-tech
+repo_name: rv-iop
+skip_sonar: true
+team: discovery-ranking

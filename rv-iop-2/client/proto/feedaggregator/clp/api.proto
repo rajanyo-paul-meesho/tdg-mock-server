@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package clpfeedaggregator;
+
+option java_multiple_files = true;
+option java_package = "com.meesho.ml.feedaggregator.clpclient.grpc.services";
+option go_package = "../grpc/clp";
+
+
+import "feedaggregator/clp/request.proto";
+import "feedaggregator/clp/response.proto";
+
+service ClpFeedHandler {
+  rpc FetchClpFeed (clpfeedaggregator.CatalogListingPageRequest) returns (clpfeedaggregator.CatalogListingPageResponse) {}
+}

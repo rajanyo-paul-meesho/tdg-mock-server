@@ -1,0 +1,23 @@
+syntax = "proto3";
+package protos;
+
+option java_package="com.meesho.vision.common.models";
+option java_outer_classname = "PdpZonalSimilarProto";
+
+option go_package = "../grpc";
+
+
+// CatalogRelevanceMapping represents a mapping between a catalog ID and its relevance score.
+message CatalogRelevanceMapping {
+  int32 catalogIds = 1;
+  float relevanceScores = 2;
+}
+
+message PdpZonalSimilarCandidate {
+  repeated CatalogRelevanceMapping pdpZonalSimilarCandidate = 1;
+}
+
+// CityToCatalogMappings represents a mapping between a city code and its corresponding catalog relevance mappings.
+message PdpZonalSimilarCandidatesProto {
+  map<int32, PdpZonalSimilarCandidate> cityCatalogMappings = 1;
+}

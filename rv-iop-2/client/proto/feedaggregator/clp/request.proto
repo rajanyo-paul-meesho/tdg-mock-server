@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package clpfeedaggregator;
+
+option java_multiple_files = true;
+option java_package = "com.meesho.ml.feedaggregator.clpclient.grpc.dtos";
+option go_package = "../grpc/clp";
+
+
+message CatalogListingPageRequest {
+  string cursor = 1;
+  int32 offset = 2;
+  int32 limit = 3;
+  Filter filter = 4;
+}
+
+message Filter {
+  repeated string selected_filters = 1 [json_name = "selected_filters"];
+  SortOption sort_option = 2 [json_name = "sort_option"];
+  string session_state = 3 [json_name = "session_state"];
+  int32 catalog_listing_page_id = 4 [json_name = "catalog_listing_page_id"];
+  string payload = 5 [json_name = "payload"];
+}
+
+message SortOption {
+  string sort_by = 1;
+  string display_name = 2;
+  string sort_order = 3;
+  bool selected = 4;
+  bool default = 5;
+}

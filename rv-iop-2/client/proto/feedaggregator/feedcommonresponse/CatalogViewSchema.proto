@@ -1,0 +1,714 @@
+syntax = "proto3";
+
+option go_package = "../feedcommonresponse";
+option java_package = "com.meesho.generated.CatalogViewProto";
+
+message CatalogViewList {
+  repeated CatalogView catalog_views = 1;
+}
+
+// Main CatalogView message
+message CatalogView {
+  int32 id = 1;
+  int32 hero_pid = 2;
+  string name = 3;
+  int32 category_id = 4;
+  string sub_sub_category_name = 5;
+  int32 min_catalog_price = 6;
+  int32 min_product_price = 7;
+  
+  // Price related fields
+  LoyaltyPriceView loyalty_price_view = 8;
+  PrepaidPriceView prepaid_price_view = 9;
+  SecondaryPriceView secondary_price_view = 10;
+  string primary_price_type = 11;
+  string secondary_price_type = 12;
+  int32 transient_price = 13;
+  int32 max_product_discount = 14;
+  int32 total_discount_in_rs = 15;
+  string discount_text = 16;
+  int32 original_price = 17;
+  
+  // Content fields
+  string description = 18;
+  string full_details = 19;
+  string share_text = 20;
+  
+  // Boolean flags
+  bool hot = 21;
+  string type = 22;
+  bool pre_booking = 23;
+  int32 priority = 24;
+  int32 num_suppliers = 25;
+  int32 num_designs = 26;
+  
+  // Image fields
+  string image = 27;
+  string notification_image = 28;
+  string collage_image = 29;
+  float image_aspect_ratio = 30;
+  float collage_image_aspect_ratio = 31;
+  
+  // Date fields
+  string created = 32;
+  string created_iso = 33;
+  string activated = 34;
+  string activated_iso = 35;
+  
+  // Status fields
+  bool valid = 36;
+  bool popular = 37;
+  bool has_mrp = 38;
+  bool is_added_to_wishlist = 39;
+  
+  // Complex object fields
+  AssuredDetails assured_details = 40;
+  bool mall_verified = 41;
+  int32 shipping_charges_adjustment = 42;
+  
+  // Story and text images
+  string story_image = 43;
+  repeated string story_images = 44;
+  string text_image = 45;
+  
+  // Rating stats
+  RatingStats catalog_reviews_summary = 46;
+  RatingStats supplier_reviews_summary = 47;
+  
+  // Promotional offers
+  repeated PromoOffer promo_offers = 48;
+  
+  // Shipping
+  ShippingView shipping = 49;
+  ShippingView shipping_2 = 50;
+  
+  // Tags
+  repeated Tag tags = 51;
+  AppEventData app_event_data = 52;
+  repeated Tag gray_tags = 53;
+  Tag value_prop_tag = 54;
+  
+  // Deal and Ad
+  DealView deal = 55;
+  Ad ad = 56;
+  
+  // Product related
+  repeated MediaView product_images = 57;
+  SupplierView supplier = 58;
+  repeated ValueProps value_props = 59;
+  
+  // Price type
+  string price_type_id = 60;
+  string price_type_tag_name = 61;
+  repeated ReturnOptions return_options = 62;
+  
+  // Tracking and duplicates
+  TrackingView tracking = 63;
+  DuplicatesView duplicate_info = 64;
+  SearchHeaderView header = 65;
+  repeated ProductViewV2 products = 66;
+  
+  // Offers and special views
+  SpecialOffersView special_offers = 67;
+  OfferPriceView offer_price = 68;
+  
+  // Wishlist and sharing
+  string wishlisted_at = 69;
+  string wishlisted_at_iso = 70;
+  string shared_at = 71;
+  string shared_at_iso = 72;
+  
+  // Internal API fields
+  bool is_hidden = 73;
+  repeated string trends = 74;
+  string consumer_share_text = 75;
+  Pricing scheduled_pricing = 76;
+  repeated string product_attributes = 77;
+  string hero_product_name = 78;
+  MeeshoCoin meesho_coin = 79;
+  bool high_asp_enabled = 80;
+  bool asp_segment = 81;
+  
+  // Brand fields
+  string brand_name = 82;
+  string brand_logo = 83;
+  
+  // Tax and commission fields
+  string gst_type = 84;
+  string state_code = 85;
+  string affiliate_commission_text = 86;
+  string lc_commission_text = 87;
+  
+  // Component and markers
+  string component = 88; // JSONObject as string
+  TrustMarkersView trust_marker = 89;
+  SaleMarkerView sale_marker = 90;
+  SuperSaverMarkerView super_saver_marker = 91;
+  ComboDealsMarkerView combo_offer = 92;
+
+  string source = 93;
+
+  repeated string catalog_traits = 94;
+  int32 emi_amount = 95;
+  LowestPriceMarkerView lowest_price_marker = 96;
+}
+
+message LowestPriceMarkerView {
+  bool enabled = 1;
+}
+
+message AdActive {
+  bool active = 1;
+  string metadata = 2;
+  string tag = 3;
+}
+
+// Nested message definitions
+message Tag {
+  string name = 1;
+}
+
+message Ad {
+  bool active = 1;
+  string tag = 2;
+  string metadata = 3;
+}
+
+// Complete message definitions based on actual Java classes
+
+message LoyaltyPriceView {
+  int32 loyalty_price = 1;
+  int32 loyalty_discount = 2;
+  int32 loyalty_original_price = 3;
+  string loyalty_discount_text = 4;
+}
+
+message PrepaidPriceView {
+  int32 prepaid_price = 1;
+  int32 prepaid_discount = 2;
+  int32 prepaid_total_discount_in_rs = 3;
+  int32 prepaid_original_price = 4;
+  string prepaid_discount_text = 5;
+}
+
+message SecondaryPriceView {
+  int32 price = 1;
+}
+
+message AssuredDetails {
+  bool is_assured = 1;
+  string message = 2;
+}
+
+message RatingStats {
+  map<int32, int32> rating_count_map = 1;
+  float average_rating = 2;
+  int32 absolute_average_rating = 3;
+  string average_rating_str = 4;
+  int32 rating_scale = 5;
+  int32 review_count = 6;
+  int32 rating_count = 7;
+  ReviewDetails top_image_review = 8;
+  string type = 9; // ReviewType enum as string
+  ReviewInfoView review = 10;
+  repeated ReviewInfoView reviews = 11;
+}
+
+message ReviewDetails {
+  int32 review_id = 1;
+  int32 reviewer_id = 2;
+  string created = 3;
+  string created_iso = 4;
+  int32 rating = 5;
+  string rating_str = 6;
+  int32 product_id = 7;
+  int32 helpful_count = 8;
+  bool marked_helpful = 9;
+  string comments = 10;
+  int32 helpful_review_id = 11;
+  repeated MediaView media_views = 12;
+}
+
+message ReviewInfoView {
+  int32 review_id = 1;
+  string created = 2;
+  string created_iso = 3;
+  int32 rating = 4;
+  string rating_str = 5;
+  int32 product_id = 6;
+  int32 helpful_count = 7;
+  bool marked_helpful = 8;
+  string comments = 9;
+  repeated MediaView media = 10;
+  repeated MediaView images = 11;
+  repeated MediaView videos = 12;
+  int32 helpful_review_id = 13;
+  AuthorInfo author = 14;
+  string reviewer_name = 15;
+  string product_name = 16;
+  string product_description = 17;
+  string product_image_thumb_url = 18;
+  string product_image_large_url = 19;
+  ReviewAttributes review_attributes = 20;
+}
+
+message PromoOffer {
+  string type = 1;
+  string name = 2;
+  string discount_text = 3;
+  int32 amount = 4;
+  bool is_applied = 5;
+}
+
+message ShippingView {
+  int32 charges = 1;
+  int32 discount = 2;
+  bool show_shipping_charges = 3;
+  bool show_free_delivery = 4;
+  bool serviceable = 5;
+  EstimatedDelivery estimated_delivery = 6;
+  bool is_express_delivery = 7;
+}
+
+message EstimatedDelivery {
+  string edd_text = 1;
+  string edd_text_color = 2;
+  string edd_icon_url = 3;
+  string edd_anim_url = 4;
+  string title = 5;
+  string date = 6;
+  string expected_delivery_date_time = 7;
+}
+
+message AppEventData {
+  CompetitivePricing competitive_pricing = 1;
+  string price_metadata = 2;
+}
+
+message CompetitivePricing {
+  bool is_substituted = 1;
+  int32 input_product_id = 2;
+  float input_product_price = 3;
+  int32 output_product_id = 4;
+  float output_product_price = 5;
+  string strategy = 6;
+}
+
+message DealView {
+  int32 id = 1;
+  string bg_color = 2;
+  string logo_text = 3;
+  string name = 4;
+  int32 start_time = 5;
+  int32 end_time = 6;
+  int32 server_time = 7;
+  string icon_image = 8;
+  string text_color = 9;
+  PricingObject deal_price = 10;
+  PricingObject original_price = 11;
+}
+
+message PricingObject {
+  int32 price = 1;
+  LoyaltyPriceView loyalty_price_view = 2;
+  PrepaidPriceView prepaid_price_view = 3;
+  SecondaryPriceView secondary_price_view = 4;
+  int32 transient_price = 5;
+  PromoOffer promo_offer = 6;
+  repeated PromoOffer promo_offers = 7;
+  int32 gst_amount = 8;
+  ShippingView shipping = 9;
+  ShippingView shipping_2 = 10;
+  DealDiscount discount = 11;
+  int32 total_discount_in_rs = 12;
+  int32 original_price = 13;
+}
+
+message DealDiscount {
+  string type = 1;
+  int32 amount = 2;
+  string display_text = 3;
+}
+
+message MediaView {
+  int32 id = 1;
+  int32 status = 2;
+  string url = 3;
+  string thumbnail_url = 4;
+  string type = 5;
+  string format = 6;
+  float aspect_ratio = 7;
+  float thumbnail_aspect_ratio = 8;
+  string web_streaming_url = 9;
+  VideoPropertiesView video_properties = 10;
+}
+
+message VideoPropertiesView {
+  string video_id = 1;
+  string preview_image = 2;
+  bool autoplay = 3;
+}
+
+message SupplierView {
+  int32 id = 1;
+  string name = 2;
+  bool is_rpc = 3;
+  string default_delivery_time = 4;
+  string delivery_time_message = 5;
+  string shipping_time = 6;
+  string formatted_shipping_date = 7;
+  int32 shipping_charges = 8; // deprecated but keeping for compatibility
+  string shipping_date = 9;
+  bool delayed_shipping = 10;
+  string returns_policy = 11;
+  bool returns = 12;
+  int32 return_type = 13;
+  int32 price = 14;
+  int32 original_price = 15;
+  int32 transient_price = 16;
+  int32 discount = 17;
+  int32 gst_amount = 18;
+  int32 mrp = 19;
+  bool cod_available = 20;
+  int32 cod_charges = 21;
+  bool manufacturer = 22;
+  bool in_stock = 23;
+  bool show_expected_delivery_date = 24;
+  float availability_rating = 25;
+  float shipping_rating = 26;
+  float quality_rating = 27;
+  repeated PromoOffer promo_offers = 28;
+  float average_rating = 29;
+  int32 rating_count = 30;
+  ShippingView shipping = 31;
+  ShippingView shipping_2 = 32;
+  DealView deal = 33;
+  repeated string variations = 34;
+  AssuredDetails assured_details = 35;
+  repeated ValueProps value_props = 36;
+  Recommendation recommendation = 37;
+  string price_type_id = 38;
+  string price_type_tag_name = 39;
+  repeated ReturnOptions return_options = 40;
+  PickupAddress address = 41;
+  LoyaltyPriceView loyalty_price_view = 42;
+}
+
+message ValueProps {
+  string name = 1;
+  string image = 2;
+  string data = 3; // JSONObject as string
+  int32 type = 4;
+}
+
+message Recommendation {
+  Size size = 1;
+  
+  message Size {
+    string message = 1;
+  }
+}
+
+message PickupAddress {
+  string pin = 1;
+  string district = 2;
+  string address_line = 3;
+  string city = 4;
+  string state = 5;
+  string country = 6;
+  string landmark = 7;
+  string lat = 8;
+  string long = 9;
+  string state_code = 10;
+}
+
+message ReturnOptions {
+  string price_type_id = 1;
+  string name = 2;
+  int32 price = 3;
+  int32 loyalty_price = 4;
+  string info_display_text = 5;
+  string display_text = 6;
+  ReturnOffer offer = 7;
+}
+
+message ReturnOffer {
+  string description = 1;
+  int32 amount = 2;
+  int32 loyalty_amount = 3;
+}
+
+message TrackingView {
+  string id = 1;
+  string feed_source = 2;
+  bool is_product_result = 3;
+  string reel_id = 4;
+}
+
+message DuplicatesView {
+  string action = 1;
+  repeated DuplicateProductView products = 2;
+  bool duplicates_present = 3;
+  string duplicates_availability_message = 4;
+}
+
+message SearchHeaderView {
+  int32 type = 1;
+  string value = 2;
+  string displayName = 3;
+  string displayDescription = 4;
+}
+
+message ProductViewV2 {
+  int32 id = 1;
+  string name = 2;
+  string fabric = 3;
+  repeated string images = 4;
+  bool valid = 5;
+  int32 min_price = 6;
+  int32 original_price = 7;
+  int32 transient_price = 8;
+  int32 discount = 9;
+  PromoOffer promo_offer = 10; // deprecated
+  repeated PromoOffer promo_offers = 11;
+  ShippingView shipping = 12;
+  AssuredDetails assured_details = 13;
+  repeated InventoryDetails inventory = 14;
+  bool in_stock = 15;
+  DealView deal = 16;
+  DuplicatesView duplicate_info = 17;
+}
+
+message SpecialOffersView {
+  string display_text = 1;
+  string header_text = 2;
+  string savings_text = 3;
+  repeated SpecialOffer offers = 4;
+}
+
+message SpecialOffer {
+  string type = 1;
+  string title = 2;
+  string description = 3;
+  int32 amount = 4;
+}
+
+message OfferPriceView {
+  string display_text = 1;
+  int32 amount = 2;
+  int32 no_of_offers = 3;
+  string icon_url = 4;
+}
+
+message Pricing {
+  PricingInformation default_pricing = 1;
+  repeated ScheduledPricing scheduled_pricing = 2;
+  
+  message ScheduledPricing {
+    int32 start_time = 1;
+    int32 end_time = 2;
+    PricingInformation pricing_information = 3;
+  }
+  
+  message PricingInformation {
+    int32 catalog_price = 1;
+    int32 catalog_discount = 2;
+    int32 catalog_original_price = 3;
+    repeated PricingOffer offers = 4;
+  }
+  
+  message PricingOffer {
+    string id = 1;
+    string event_id = 2;
+  }
+}
+
+message MeeshoCoin {
+  Earn earn = 1;
+  Burn burn = 2;
+  
+  message Earn {
+    int32 earn_coins = 1;
+    int32 earn_price = 2;
+  }
+  
+  message Burn {
+    int32 burn_coins = 1;
+    int32 burn_price = 2;
+  }
+}
+
+message TrustMarkersView {
+  string text = 1;
+  string icon = 2;
+}
+
+message SaleMarkerView {
+  bool enabled = 1;
+}
+
+message SuperSaverMarkerView {
+  bool enabled = 1;
+}
+
+message ComboDealsMarkerView {
+  bool enabled = 1;
+}
+
+// Additional message types referenced by other messages
+
+message DuplicateProductView {
+  int32 id = 1;
+  string name = 2;
+  repeated string images = 3;
+  bool full_catalog = 4;
+  bool valid = 5;
+  AdditionalInfo additional_info = 6;
+  string best_match_string = 7;
+  RatingStats catalog_reviews_summary = 8;
+  string fabric = 9;
+  repeated DuplicateSuppliersView suppliers = 10;
+}
+
+message AdditionalInfo {
+  bool pre_booking = 1;
+  int32 catalog_id = 2;
+  int32 supplier_id = 3;
+  string supplier_name = 4;
+  float supplier_average_rating = 5;
+  RatingStats catalog_reviews_summary = 6;
+  string fabric = 7;
+  string best_match_string = 8;
+  string new_supplier_switch_message = 9;
+  string old_supplier_switch_message = 10;
+  string discovery_message = 11;
+  SavingMessages saving_messages = 12;
+}
+
+message SavingMessages {
+  string price_message = 1;
+  string same_price_message = 2;
+  string oos_price_message = 3;
+  string tooltip_price_message = 4;
+  string tooltip_same_price_message = 5;
+}
+
+message DuplicateSuppliersView {
+  // All fields from SupplierView
+  int32 id = 1;
+  string name = 2;
+  bool is_rpc = 3;
+  string default_delivery_time = 4;
+  string delivery_time_message = 5;
+  string shipping_time = 6;
+  string formatted_shipping_date = 7;
+  int32 shipping_charges = 8; // deprecated
+  string shipping_date = 9;
+  bool delayed_shipping = 10;
+  string returns_policy = 11;
+  bool returns = 12;
+  int32 return_type = 13;
+  int32 price = 14;
+  int32 original_price = 15;
+  int32 transient_price = 16;
+  int32 discount = 17;
+  int32 gst_amount = 18;
+  int32 mrp = 19;
+  bool cod_available = 20;
+  int32 cod_charges = 21;
+  bool manufacturer = 22;
+  bool in_stock = 23;
+  bool show_expected_delivery_date = 24;
+  float availability_rating = 25;
+  float shipping_rating = 26;
+  float quality_rating = 27;
+  PromoOffer promo_offer = 28; // deprecated
+  repeated PromoOffer promo_offers = 29;
+  float average_rating = 30;
+  int32 rating_count = 31;
+  ShippingView shipping = 32;
+  ShippingView shipping_2 = 33;
+  DealView deal = 34;
+  repeated string variations = 35;
+  BookingAmountDetails booking_amount_details = 36;
+  AssuredDetails assured_details = 37;
+  repeated ValueProps value_props = 38;
+  Recommendation recommendation = 39;
+  repeated InventoryDetails inventory = 40;
+  string price_type_id = 41;
+  string price_type_tag_name = 42;
+  repeated ReturnOptions return_options = 43;
+  PickupAddress address = 44;
+  LoyaltyPriceView loyalty_price_view = 45;
+  
+  // Additional field from DuplicateSuppliersView
+  int32 final_price = 46;
+}
+
+message AuthorInfo {
+  string name = 1;
+  string profile_image = 2;
+  string social_profile_token = 3;
+  int32 followers = 4;
+  string gamification_level = 5;
+  int32 helpful = 6;
+  bool is_following = 7;
+}
+
+message ReviewAttributes {
+  string title = 1;
+  repeated ReviewAttribute attributes = 2;
+  
+  message ReviewAttribute {
+    string label = 1;
+    string icon = 2;
+    string text_color = 3;
+    string background_color = 4;
+    string stroke_color = 5;
+    AttributeDescription description = 6;
+    string filter_option = 7;
+    
+    message AttributeDescription {
+      AttributeVotes attribute_votes = 1;
+      string description_text = 2;
+      
+      message AttributeVotes {
+        AttributeVote total = 1;
+        AttributeVote positive = 2;
+        AttributeVote neutral = 3;
+        AttributeVote negative = 4;
+        
+        message AttributeVote {
+          string label = 1;
+          string count = 2;
+          string color = 3;
+        }
+      }
+    }
+  }
+}
+
+message InventoryDetails {
+  int32 supplier_id = 1;
+  InventoryVariationDetails variation = 2;
+  bool in_stock = 3;
+  
+  message InventoryVariationDetails {
+    int32 id = 1;
+    string name = 2;
+    int32 inventory_count = 3;
+    int32 final_price = 4;
+    string primary_attribute = 5;
+    int32 product_id = 6;
+    int32 catalog_id = 7;
+    int32 priority = 8;
+    bool is_express_delivery = 9;
+    int32 variation_swap_state = 10; // VariationSwapState enum as int
+  }
+}
+
+message BookingAmountDetails {
+  int32 value = 1;
+  string message = 2;
+  string type = 3;
+} 

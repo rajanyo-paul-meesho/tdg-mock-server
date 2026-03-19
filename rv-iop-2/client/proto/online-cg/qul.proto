@@ -1,0 +1,156 @@
+syntax = "proto3";
+
+// included qulResponse in onlinecg package to avoid name conflicts
+package onlinecg;
+
+option go_package = "../grpc";
+option java_package = "com.meesho.ml.onlinecg.client.grpc.services";
+
+// QUL (Query Understanding Layer) Response and related structures
+message QULResponse {
+  string normalised_query = 1;
+  string original_query = 2;
+  string sanitised_query = 3;
+  bool is_query_blacklisted = 4;
+  repeated Expansion expansions = 5;
+  Tracking tracking = 6;
+  UserIntent user_intent = 7;
+  UserIntent user_intent_v2 = 8;
+  map<int32, UserIntent> user_intent_v3 = 9;
+  repeated Detail detail = 10;
+  repeated QueryAttribute query_attributes = 11;
+  bool is_default_qul_response = 12;
+}
+
+// Detail and Error Objects
+message Detail {
+  repeated ErrorObject error_objects_list = 1;
+}
+
+message ErrorObject {
+  string message = 1;
+  string type = 2;
+}
+
+// User Intent structures
+message UserIntent {
+  UserIntentRule filter = 1;
+  repeated Boost boost = 2;
+}
+
+message Boost {
+  string weight_type = 1;
+  float action_weight = 2;
+  UserIntentRule action_rule = 3;
+  string action_mapping = 4;
+}
+
+message UserIntentRule {
+  string rule_type = 1;
+  repeated UserIntentRule rules = 2;
+  LeafRule leaf_rule = 3;
+  string rule_mapping = 4;
+}
+
+message LeafRule {
+  string attribute = 1;
+  string operator = 2;
+  repeated string values = 3;
+}
+
+// Expansion
+message Expansion {
+  string expanded_ngram = 1;
+  double similarity_score = 2;
+}
+
+// Query Attribute
+message QueryAttribute {
+  string attribute_name = 1;
+  repeated string attribute_values = 2;
+}
+
+// Tracking and its nested types
+message Tracking {
+  SpellCorrection spell_correction = 1;
+  string original_normalised_query = 2;
+  repeated Expansion original_expansions = 3;
+  QueryTagging query_tagging = 4;
+  Intent intent = 5;
+  Category category_detected = 6;
+  map<string, StringList> boost_detected = 7;
+  LLMResult llm_result = 8;
+  QRRResult qrr_result = 9;
+  NERResult ner_result = 10;
+  map<int32, IntentOverride> intent_override = 11;
+}
+
+message Category {
+  map<string, StringList> filter = 1;
+  map<string, StringList> boost = 2;
+}
+
+message NERResult {
+  map<string, StringList> ner_filter = 1;
+  map<string, StringList> ner_boost = 2;
+}
+
+message Intent {
+  repeated string intent_rule_ids = 1;
+  repeated string input_abg = 2;
+  map<string, StringList> excluded_fields = 3;
+}
+
+message QueryTagging {
+  map<string, double> qcm_result = 1;
+  string qtm_result_json = 2; // Stores complex nested map as JSON string
+  double rsvt = 3;
+  double gvt = 4;
+}
+
+message SpellCorrection {
+  string query = 1;
+  string qcl_top_candidate = 2;
+  bool qcl_candidate_accepted = 3;
+  int32 autocorrect_version = 4;
+  string spell_map_input = 5;
+  bool spell_map_used = 6;
+  string corrected_query = 7;
+  string corrected_query_ml = 8;
+  bool sqcm_accepted = 9;
+  int32 sqcm_version = 10;
+  double sqcm_vol_threshold = 11;
+  string final_corrected_query = 12;
+  double sqcm_probability_score = 13;
+}
+
+message LLMResult {
+  LLMNormalisation normalisation = 1;
+}
+
+message LLMNormalisation {
+  string query = 1;
+  bool exact_match = 2;
+  bool accepted = 3;
+}
+
+message QRRResult {
+  QRRNormalisation normalisation = 1;
+  int32 bucket_rank = 2;
+}
+
+message QRRNormalisation {
+  string query = 1;
+  int32 flow = 2;
+}
+
+message IntentOverride {
+  bool status = 1;
+  repeated string sscat_ids = 2;
+}
+
+// Helper message for map<string, []string> since proto doesn't support repeated values in maps
+message StringList {
+  repeated string values = 1;
+}
+

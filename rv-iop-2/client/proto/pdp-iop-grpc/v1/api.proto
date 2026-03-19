@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package pdpiop;
+
+option go_package = "../../../grpc/pdp-iop/v1";
+
+option java_multiple_files = true;
+option java_package = "com.meesho.ml.pdpiop.v1.client.grpc.services";
+
+import "pdp-iop-grpc/v1/request.proto";
+import "pdp-iop-grpc/v1/response.proto";
+import "google/protobuf/empty.proto";
+
+service PdpIopService {
+  rpc FetchExploitSimilarEntityFeed (GetSimilarEntityOrganicFeedRequest) returns (GetSimilarEntityOrganicFeedResponse) {}
+  rpc FetchExploreSimilarEntityFeed (GetSimilarEntityCtFeedRequest) returns (GetSimilarEntityCtFeedResponse) {}
+  rpc FetchAdSimilarEntityFeed (GetSimilarEntityAdFeedRequest) returns (GetSimilarEntityAdFeedResponse) {}
+  rpc RefreshExploitSimilarEntityFeed (RefreshSimilarEntityOrganicFeedRequest) returns (RefreshSimilarEntityOrganicFeedResponse) {}
+  rpc GetComponents(google.protobuf.Empty) returns (GetComponentsResponse) {}
+}

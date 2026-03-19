@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package pdpfeedaggregator;
+
+option go_package = "../v2";
+
+message RecommendationsRequestV2 {
+  string cursor = 1;
+  int32 offset = 2;
+  int32 limit = 3;
+  string feed_type = 4;
+  string feed_context = 5;
+  int32 catalog_id = 6; // [required=true]
+  int32 product_id = 7;
+  int32 sub_sub_category_id = 8; // [(validate.rules).int32.gt = 0]
+}

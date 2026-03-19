@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package rviop;
+
+option java_package = "com.meesho.ml.rviop.client.grpc.dtos";
+option go_package = "github.com/Meesho/rv-iop/client/grpc/rv-iop";
+
+
+message GetRvSubstituteOrganicFeedRequest {
+  GetRecentlyViewedFeedRequest request = 1;
+}
+
+message GetRvSubstituteCtFeedRequest {
+  GetRecentlyViewedFeedRequest request = 1;
+}
+
+message GetRvSubstituteAdFeedRequest {
+  GetRecentlyViewedFeedRequest request = 1;
+}
+
+message GetRecentlyViewedFeedRequest {
+  RequestData data = 1;
+}
+
+message GetCrossSellWidgetRequest {
+  GetCrossSellWidgetRequestData request = 1;
+}
+
+message GetCrossSellFeedRequest {
+  GetCrossSellFeedRequestData request = 1;
+}
+
+message GetRvInteractionsFeedRequest {
+  GetRecentlyViewedInteractionsFeedRequest request = 1;
+}
+
+message GetRvInteractionsWidgetRequest {
+  GetRecentlyViewedInteractionsFeedRequest request = 1;
+}
+
+message GetRecentlyViewedInteractionsFeedRequest {
+  RvInteractionsRequestData data = 1;
+}
+
+message GetCrossSellWidgetRequestData {
+  CrossSellRequestData data = 1;
+}
+
+message GetCrossSellFeedRequestData {
+  CrossSellRequestData data = 1;
+}
+
+message RequestData {
+  int32  parentEntityId = 1;
+  string parentEntityType = 2;
+  string feedContext = 3;
+  string cursor = 4;
+  int32  limit = 5;
+  map<string, string> meta = 6;
+  int32 subSubCategoryId = 7;
+} 
+
+message CrossSellRequestData {
+  repeated int32  parentEntityIds = 1;
+  string parentEntityType = 2;
+  string feedContext = 3;
+  string cursor = 4;
+  int32  limit = 5;
+  map<string, string> meta = 6;
+  int32 subSubCategoryId = 7;
+} 
+
+message RvInteractionsRequestData {
+  string user_id = 1;
+  int32 sscat_id = 2;
+  int32 limit = 3;
+  string cursor = 4;
+  map<string, string> meta = 5;
+  string feed_context = 6;
+}

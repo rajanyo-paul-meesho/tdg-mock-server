@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option java_package = "com.meesho.ml.pdpiop.client.grpc.dtos";
+option go_package = "../../grpc/pdp-iop";
+
+message GetSimilarEntityOrganicFeedResponse {
+  GetSimilarEntityFeedResponse response = 1;
+}
+
+message GetSimilarEntityAdFeedResponse {
+  GetSimilarEntityFeedResponse response = 1;
+}
+
+message GetSimilarEntityCtFeedResponse {
+  GetSimilarEntityFeedResponse response = 1;
+}
+
+
+message GetSimilarEntityFeedResponse {
+  ResponseData data = 1;
+  Error error = 2;
+}
+
+message ResponseData {
+  string tenantContext = 1;
+  bool hasNextEntity = 2;
+  repeated SimilarEntitiesResponse similarEntities = 3;
+  repeated int32 Slots = 4;
+}
+
+message SimilarEntitiesResponse {
+  int32 id = 1;
+  string cursor = 2;
+  string meta = 3;
+  string trackingId = 4;
+  MetaData metadata = 5;
+}
+
+message MetaData {
+  map<string, string> scores = 1;
+  string source = 2;
+  map<string, string> context = 3;
+  string subTenant = 4;
+  map<string, string> sse = 5;
+}
+
+message Error {
+  string message = 1;
+}

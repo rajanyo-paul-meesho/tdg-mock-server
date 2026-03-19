@@ -1,0 +1,3162 @@
+cross-re:
+  catalog-detail:
+    in-memory-cache-enabled: true
+  external-service:
+    model-proxy:
+      batch-size: 250
+      host-details:
+        rv-substitute-ad-scaleup:
+          env-prefix: RV_SUBSTITUTE_AD_SCALEUP_MP
+      skip-mp-call: false
+iop-starter:
+  multi-re:
+    rv-substitute:
+      wishlist:
+        exploit:
+          anonymous:
+            variant-config:
+              scaleup:
+                current-scaleup:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "wishlist_reco_exploit_anon_scaleup",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_exploit_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "rv_substitute_exploit_model_proxy_connector"
+                    ],
+                    "rv_substitute_exploit_model_proxy_connector": [
+                    "rv_substitute_exploit_organic_ltr_ranker"
+                    ],
+                    "rv_substitute_exploit_organic_ltr_ranker": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_exploit_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_exploit_organic_ltr_ranker": {
+                    "ltr_min_threshold": 0,
+                    "catalog_min_size": 70
+                    },
+                    "rv_substitute_exploit_model_proxy_connector": {
+                    "host_id": "rv-substitute-exploit-experiment",
+                    "config_id": "pdp-organic-experiment-dl-scale-up-replica",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "batch_size": 100
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "interaction_based_vss_similarity_wishlist_reco",
+                    "algo_variant_id": "wishlist-substitute",
+                    "online_cg_host_id": "exploit",
+                    "limit": 2000
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                  scaleup-percent: 100
+          logged-in:
+            multi-experiment-data:
+              recently_viewed_v2_substitute_experiment:
+                config-filter-type: feed_type:feed_context:service_tag
+                enabled: false
+              wishlist_reco_exp:
+                config-filter-type: feed_type:feed_context:service_tag
+                enabled: false
+            variant-config:
+              experiment:
+                wishlist-exploit-subs-personalisation-ranker-exp:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "wishlist_reco_exploit_p13n_experiment",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_exploit_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "rv_substitute_exploit_model_proxy_connector"
+                    ],
+                    "rv_substitute_exploit_model_proxy_connector": [
+                    "rv_substitute_exploit_organic_ltr_ranker"
+                    ],
+                    "rv_substitute_exploit_organic_ltr_ranker": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_exploit_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_exploit_organic_ltr_ranker": {
+                    "ltr_min_threshold": 0,
+                    "catalog_min_size": 70
+                    },
+                    "rv_substitute_exploit_model_proxy_connector": {
+                    "host_id": "rv-substitute-exploit-experiment",
+                    "config_id": "pdp-organic-experiment-dl-scale-up-replica",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "batch_size": 240
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "interaction_based_vss_similarity_wishlist_reco",
+                    "algo_variant_id": "wishlist-substitute",
+                    "online_cg_host_id": "exploit",
+                    "limit": 2000
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                wishlist-exploit-substitute-experiment:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "wishlist_reco_exploit_experiment",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_exploit_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "rv_substitute_exploit_model_proxy_connector"
+                    ],
+                    "rv_substitute_exploit_model_proxy_connector": [
+                    "rv_substitute_exploit_organic_ltr_ranker"
+                    ],
+                    "rv_substitute_exploit_organic_ltr_ranker": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_exploit_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_exploit_organic_ltr_ranker": {
+                    "ltr_min_threshold": 0,
+                    "catalog_min_size": 70
+                    },
+                    "rv_substitute_exploit_model_proxy_connector": {
+                    "host_id": "rv-substitute-exploit-experiment",
+                    "config_id": "pdp-organic-experiment-dl-scale-up-replica",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "batch_size": 100
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "interaction_based_vss_similarity_wishlist_reco",
+                    "algo_variant_id": "wishlist-substitute",
+                    "online_cg_host_id": "exploit",
+                    "limit": 2000
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                wishlist-reco-exploit-rv-ranker-exp:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "wishlist_reco_exploit_rv_ranker_experiment",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_exploit_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "rv_substitute_exploit_model_proxy_connector"
+                    ],
+                    "rv_substitute_exploit_model_proxy_connector": [
+                    "rv_substitute_exploit_organic_ltr_ranker"
+                    ],
+                    "rv_substitute_exploit_organic_ltr_ranker": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_exploit_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_exploit_organic_ltr_ranker": {
+                    "ltr_min_threshold": 0,
+                    "catalog_min_size": 70
+                    },
+                    "rv_substitute_exploit_model_proxy_connector": {
+                    "host_id": "rv-substitute-exploit-scaleup",
+                    "config_id": "rv-organic-scale-up",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "batch_size": 100
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "interaction_based_vss_similarity_wishlist_reco",
+                    "algo_variant_id": "wishlist-substitute",
+                    "online_cg_host_id": "exploit",
+                    "limit": 2000
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+              scaleup:
+                current-scaleup:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "wishlist_reco_exploit_scaleup",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_exploit_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "rv_substitute_exploit_model_proxy_connector"
+                    ],
+                    "rv_substitute_exploit_model_proxy_connector": [
+                    "rv_substitute_exploit_organic_ltr_ranker"
+                    ],
+                    "rv_substitute_exploit_organic_ltr_ranker": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_exploit_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_exploit_organic_ltr_ranker": {
+                    "ltr_min_threshold": 0,
+                    "catalog_min_size": 70
+                    },
+                    "rv_substitute_exploit_model_proxy_connector": {
+                    "host_id": "rv-substitute-exploit-scaleup",
+                    "config_id": "rv-organic-scale-up",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "batch_size": 100
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "interaction_based_vss_similarity_wishlist_reco",
+                    "algo_variant_id": "wishlist-substitute",
+                    "online_cg_host_id": "exploit",
+                    "limit": 2000
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                  scaleup-percent: 100
+        ad:
+          logged-in:
+            multi-experiment-data:
+              wishlist_reco_exp:
+                config-filter-type: feed_type:feed_context:tenant_context:service_tag
+                enabled: false
+              wishlist_reco_ad_exp:
+                config-filter-type: feed_type:feed_context:tenant_context:service_tag
+                enabled: false
+            variant-config:
+              experiment:
+                wishlist_ad_subs_exp_relevance_0.6:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                      "config": {
+                        "enabled": true,
+                        "name": "wishlist_reco_intent_cg_relevance_0.6_experiment",
+                        "is_not_user_level": false,
+                        "result_component": "rv_substitute_ad_cursor_builder",
+                        "dag_config": {
+                          "rv_substitute_online_cg_connector": [
+                            "catalog_visibility_filter"
+                          ],
+                          "catalog_visibility_filter": [
+                            "model_proxy_connector"
+                          ],
+                          "model_proxy_connector": [
+                            "slotted_feed_merger"
+                          ],
+                          "slotted_feed_merger": [
+                            "catalog_validator"
+                          ],
+                          "catalog_validator": [
+                            "rv_substitute_ad_cursor_builder"
+                          ]
+                        },
+                        "component_config": {
+                          "model_proxy_connector": {
+                            "host_id": "rv-substitute-ad-scaleup",
+                            "config_id": "rv-ad-scale-up",
+                            "batch_size": 200,
+                            "merge_strategy_on_failure": "shuffle",
+                            "merge_config": {
+                              "max_merge_item": "200"
+                            },
+                            "is_soft_failure_enabled": true,
+                            "skip_mp_call": false,
+                            "failure_threshold_percent": 60,
+                            "candidate_features": {
+                              "scores": [
+                                {
+                                  "key_to_fetch": "score",
+                                  "model_proxy_feature_name": "catalog:score"
+                                }
+                              ],
+                              "metadata": [
+                                {
+                                  "key_to_fetch": "source_cg",
+                                  "model_proxy_feature_name": "catalog:source"
+                                }
+                              ]
+                            },
+                            "meta_scores": [
+                              {
+                                "key_to_fetch": "cpc_score",
+                                "response_field": "cpc_score",
+                                "float_precision": 4
+                              }
+                            ]
+                          },
+                          "rv_substitute_online_cg_connector": {
+                            "algo_name": "interaction_based_vss_similarity_wishlist_reco_dyn_thresholds",
+                            "algo_variant_id": "intent_cg_0.6_threshold",
+                            "online_cg_host_id": "ad",
+                            "limit": 2500,
+                            "sub_tenant": "old_ad",
+                            "candidate_context_to_add": {
+                              "sub_tenant": "old_ad"
+                            }
+                          },
+                          "catalog_visibility_filter": {
+                            "filters": [
+                              "ads_filter"
+                            ],
+                            "requested_limit_multiplier": 5
+                          },
+                          "slotted_feed_merger": {
+                            "default_slots": [
+                              1,
+                              4,
+                              5,
+                              8,
+                              10,
+                              12,
+                              13,
+                              16,
+                              18,
+                              21,
+                              24,
+                              25,
+                              28,
+                              29,
+                              32,
+                              34,
+                              35,
+                              38,
+                              39,
+                              42,
+                              44,
+                              46,
+                              47,
+                              50,
+                              52,
+                              53,
+                              55,
+                              58,
+                              59,
+                              62,
+                              63,
+                              66,
+                              67,
+                              70
+                            ],
+                            "default_preferred_sub_tenants": [
+                              "old_ad"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                   }'
+                  logging-percent: 1
+                wishlist_ad_subs_exp_relevance_0.7:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                      "config": {
+                        "enabled": true,
+                        "name": "wishlist_reco_intent_cg_relevance_0.7_experiment",
+                        "is_not_user_level": false,
+                        "result_component": "rv_substitute_ad_cursor_builder",
+                        "dag_config": {
+                          "rv_substitute_online_cg_connector": [
+                            "catalog_visibility_filter"
+                          ],
+                          "catalog_visibility_filter": [
+                            "model_proxy_connector"
+                          ],
+                          "model_proxy_connector": [
+                            "slotted_feed_merger"
+                          ],
+                          "slotted_feed_merger": [
+                            "catalog_validator"
+                          ],
+                          "catalog_validator": [
+                            "rv_substitute_ad_cursor_builder"
+                          ]
+                        },
+                        "component_config": {
+                          "model_proxy_connector": {
+                            "host_id": "rv-substitute-ad-scaleup",
+                            "config_id": "rv-ad-scale-up",
+                            "batch_size": 200,
+                            "merge_strategy_on_failure": "shuffle",
+                            "merge_config": {
+                              "max_merge_item": "200"
+                            },
+                            "is_soft_failure_enabled": true,
+                            "skip_mp_call": false,
+                            "failure_threshold_percent": 60,
+                            "candidate_features": {
+                              "scores": [
+                                {
+                                  "key_to_fetch": "score",
+                                  "model_proxy_feature_name": "catalog:score"
+                                }
+                              ],
+                              "metadata": [
+                                {
+                                  "key_to_fetch": "source_cg",
+                                  "model_proxy_feature_name": "catalog:source"
+                                }
+                              ]
+                            },
+                            "meta_scores": [
+                              {
+                                "key_to_fetch": "cpc_score",
+                                "response_field": "cpc_score",
+                                "float_precision": 4
+                              }
+                            ]
+                          },
+                          "rv_substitute_online_cg_connector": {
+                            "algo_name": "interaction_based_vss_similarity_wishlist_reco_dyn_thresholds",
+                            "algo_variant_id": "intent_cg_0.7_threshold",
+                            "online_cg_host_id": "ad",
+                            "limit": 2500,
+                            "sub_tenant": "old_ad",
+                            "candidate_context_to_add": {
+                              "sub_tenant": "old_ad"
+                            }
+                          },
+                          "catalog_visibility_filter": {
+                            "filters": [
+                              "ads_filter"
+                            ],
+                            "requested_limit_multiplier": 5
+                          },
+                          "slotted_feed_merger": {
+                            "default_slots": [
+                              1,
+                              4,
+                              5,
+                              8,
+                              10,
+                              12,
+                              13,
+                              16,
+                              18,
+                              21,
+                              24,
+                              25,
+                              28,
+                              29,
+                              32,
+                              34,
+                              35,
+                              38,
+                              39,
+                              42,
+                              44,
+                              46,
+                              47,
+                              50,
+                              52,
+                              53,
+                              55,
+                              58,
+                              59,
+                              62,
+                              63,
+                              66,
+                              67,
+                              70
+                            ],
+                            "default_preferred_sub_tenants": [
+                              "old_ad"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                   }'
+                  logging-percent: 1
+                wishlist_ad_subs_exp_relevance_0.8:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                      "config": {
+                        "enabled": true,
+                        "name": "wishlist_reco_intent_cg_relevance_0.8_experiment",
+                        "is_not_user_level": false,
+                        "result_component": "rv_substitute_ad_cursor_builder",
+                        "dag_config": {
+                          "rv_substitute_online_cg_connector": [
+                            "catalog_visibility_filter"
+                          ],
+                          "catalog_visibility_filter": [
+                            "model_proxy_connector"
+                          ],
+                          "model_proxy_connector": [
+                            "slotted_feed_merger"
+                          ],
+                          "slotted_feed_merger": [
+                            "catalog_validator"
+                          ],
+                          "catalog_validator": [
+                            "rv_substitute_ad_cursor_builder"
+                          ]
+                        },
+                        "component_config": {
+                          "model_proxy_connector": {
+                            "host_id": "rv-substitute-ad-scaleup",
+                            "config_id": "rv-ad-scale-up",
+                            "batch_size": 200,
+                            "merge_strategy_on_failure": "shuffle",
+                            "merge_config": {
+                              "max_merge_item": "200"
+                            },
+                            "is_soft_failure_enabled": true,
+                            "skip_mp_call": false,
+                            "failure_threshold_percent": 60,
+                            "candidate_features": {
+                              "scores": [
+                                {
+                                  "key_to_fetch": "score",
+                                  "model_proxy_feature_name": "catalog:score"
+                                }
+                              ],
+                              "metadata": [
+                                {
+                                  "key_to_fetch": "source_cg",
+                                  "model_proxy_feature_name": "catalog:source"
+                                }
+                              ]
+                            },
+                            "meta_scores": [
+                              {
+                                "key_to_fetch": "cpc_score",
+                                "response_field": "cpc_score",
+                                "float_precision": 4
+                              }
+                            ]
+                          },
+                          "rv_substitute_online_cg_connector": {
+                            "algo_name": "interaction_based_vss_similarity_wishlist_reco_dyn_thresholds",
+                            "algo_variant_id": "intent_cg_0.8_threshold",
+                            "online_cg_host_id": "ad",
+                            "limit": 2500,
+                            "sub_tenant": "old_ad",
+                            "candidate_context_to_add": {
+                              "sub_tenant": "old_ad"
+                            }
+                          },
+                          "catalog_visibility_filter": {
+                            "filters": [
+                              "ads_filter"
+                            ],
+                            "requested_limit_multiplier": 5
+                          },
+                          "slotted_feed_merger": {
+                            "default_slots": [
+                              1,
+                              4,
+                              5,
+                              8,
+                              10,
+                              12,
+                              13,
+                              16,
+                              18,
+                              21,
+                              24,
+                              25,
+                              28,
+                              29,
+                              32,
+                              34,
+                              35,
+                              38,
+                              39,
+                              42,
+                              44,
+                              46,
+                              47,
+                              50,
+                              52,
+                              53,
+                              55,
+                              58,
+                              59,
+                              62,
+                              63,
+                              66,
+                              67,
+                              70
+                            ],
+                            "default_preferred_sub_tenants": [
+                              "old_ad"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                   }'
+                  logging-percent: 1
+              override:
+                override-config:
+                  config-bundle: '{"generate_feed_on_the_fly":{"config":{"enabled":true,"name":"wishlist_reco_intent_cg_relevance_0.7_scaleup_loggedin","is_not_user_level":false,"result_component":"rv_substitute_ad_cursor_builder","dag_config":{"rv_substitute_online_cg_connector":["catalog_visibility_filter"],"catalog_visibility_filter":["model_proxy_connector"],"model_proxy_connector":["slotted_feed_merger"],"slotted_feed_merger":["catalog_validator"],"catalog_validator":["rv_substitute_ad_cursor_builder"]},"component_config":{"model_proxy_connector":{"host_id":"rv-substitute-ad-scaleup","config_id":"rv-ad-scale-up","batch_size":200,"merge_strategy_on_failure":"shuffle","merge_config":{"max_merge_item":"200"},"is_soft_failure_enabled":true,"skip_mp_call":false,"failure_threshold_percent":60,"candidate_features":{"scores":[{"key_to_fetch":"score","model_proxy_feature_name":"catalog:score"}],"metadata":[{"key_to_fetch":"source_cg","model_proxy_feature_name":"catalog:source"}]},"meta_scores":[{"key_to_fetch":"cpc_score","response_field":"cpc_score","float_precision":4}]},"rv_substitute_online_cg_connector":{"algo_name":"interaction_based_vss_similarity_wishlist_reco_dyn_thresholds","algo_variant_id":"intent_cg_0.7_threshold","online_cg_host_id":"ad","limit":2500,"sub_tenant":"old_ad","candidate_context_to_add":{"sub_tenant":"old_ad"}},"catalog_visibility_filter":{"filters":["ads_filter"],"requested_limit_multiplier":5},"slotted_feed_merger":{"default_slots":[1,4,5,8,10,12,13,16,18,21,24,25,28,29,32,34,35,38,39,42,44,46,47,50,52,53,55,58,59,62,63,66,67,70],"default_preferred_sub_tenants":["old_ad"]}}}}}'
+                  logging-percent: 1
+                user-ids: 47707873,57664099,380400304,193190710,28529575
+              scaleup:
+                current-scaleup:
+                  config-bundle: '{"generate_feed_on_the_fly":{"config":{"enabled":true,"name":"wishlist_reco_intent_cg_relevance_0.7_scaleup_loggedin","is_not_user_level":false,"result_component":"rv_substitute_ad_cursor_builder","dag_config":{"rv_substitute_online_cg_connector":["catalog_visibility_filter"],"catalog_visibility_filter":["model_proxy_connector"],"model_proxy_connector":["slotted_feed_merger"],"slotted_feed_merger":["catalog_validator"],"catalog_validator":["rv_substitute_ad_cursor_builder"]},"component_config":{"model_proxy_connector":{"host_id":"rv-substitute-ad-scaleup","config_id":"rv-ad-scale-up","batch_size":200,"merge_strategy_on_failure":"shuffle","merge_config":{"max_merge_item":"200"},"is_soft_failure_enabled":true,"skip_mp_call":false,"failure_threshold_percent":60,"candidate_features":{"scores":[{"key_to_fetch":"score","model_proxy_feature_name":"catalog:score"}],"metadata":[{"key_to_fetch":"source_cg","model_proxy_feature_name":"catalog:source"}]},"meta_scores":[{"key_to_fetch":"cpc_score","response_field":"cpc_score","float_precision":4}]},"rv_substitute_online_cg_connector":{"algo_name":"interaction_based_vss_similarity_wishlist_reco_dyn_thresholds","algo_variant_id":"intent_cg_0.7_threshold","online_cg_host_id":"ad","limit":2500,"sub_tenant":"old_ad","candidate_context_to_add":{"sub_tenant":"old_ad"}},"catalog_visibility_filter":{"filters":["ads_filter"],"requested_limit_multiplier":5},"slotted_feed_merger":{"default_slots":[1,4,5,8,10,12,13,16,18,21,24,25,28,29,32,34,35,38,39,42,44,46,47,50,52,53,55,58,59,62,63,66,67,70],"default_preferred_sub_tenants":["old_ad"]}}}}}'
+                  logging-percent: 1
+                  scaleup-percent: 100
+          anonymous:
+            variant-config:
+              scaleup:
+                current-scaleup:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                      "config": {
+                        "enabled": true,
+                        "name": "wishlist_reco_ad_anon_scaleup",
+                        "is_not_user_level": false,
+                        "result_component": "empty_feed",
+                        "dag_config": {
+                          "empty_feed": []
+                        },
+                        "component_config": {}
+                      }
+                    }
+                   }'
+                  logging-percent: 1
+                  scaleup-percent: 100
+                current-scaleup-percentage:
+                  config-bundle: '{"generate_feed_on_the_fly":{"config":{"enabled":true,"name":"wishlist_reco_intent_cg_relevance_0.7_scaleup_anon","is_not_user_level":false,"result_component":"rv_substitute_ad_cursor_builder","dag_config":{"rv_substitute_online_cg_connector":["catalog_visibility_filter"],"catalog_visibility_filter":["model_proxy_connector"],"model_proxy_connector":["slotted_feed_merger"],"slotted_feed_merger":["catalog_validator"],"catalog_validator":["rv_substitute_ad_cursor_builder"]},"component_config":{"model_proxy_connector":{"host_id":"rv-substitute-ad-scaleup","config_id":"rv-ad-scale-up","batch_size":200,"merge_strategy_on_failure":"shuffle","merge_config":{"max_merge_item":"200"},"is_soft_failure_enabled":true,"skip_mp_call":false,"failure_threshold_percent":60,"candidate_features":{"scores":[{"key_to_fetch":"score","model_proxy_feature_name":"catalog:score"}],"metadata":[{"key_to_fetch":"source_cg","model_proxy_feature_name":"catalog:source"}]},"meta_scores":[{"key_to_fetch":"cpc_score","response_field":"cpc_score","float_precision":4}]},"rv_substitute_online_cg_connector":{"algo_name":"interaction_based_vss_similarity_wishlist_reco_dyn_thresholds","algo_variant_id":"intent_cg_0.7_threshold","online_cg_host_id":"ad","limit":2500,"sub_tenant":"old_ad","candidate_context_to_add":{"sub_tenant":"old_ad"}},"catalog_visibility_filter":{"filters":["ads_filter"],"requested_limit_multiplier":5},"slotted_feed_merger":{"default_slots":[1,4,5,8,10,12,13,16,18,21,24,25,28,29,32,34,35,38,39,42,44,46,47,50,52,53,55,58,59,62,63,66,67,70],"default_preferred_sub_tenants":["old_ad"]}}}}}'
+                  logging-percent: 1
+                  scaleup-percent: 0
+      default:
+        ad:
+          anonymous:
+            variant-config:
+              scaleup:
+                current-scaleup:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_substitute_ad_scaleup",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_ad_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "ad_live_filter"
+                    ],
+                    "ad_live_filter": [
+                    "rv_substitute_ad_model_proxy_connector"
+                    ],
+                    "rv_substitute_ad_model_proxy_connector": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_ad_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_ad_model_proxy_connector": {
+                    "host_id": "rv-substitute-ad-scaleup",
+                    "config_id": "rv-ad-scale-up",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "ranking_score_equation": "multiplicative",
+                    "ctr_weight": 0.25,
+                    "cvr_weight": 0.75,
+                    "min_percentile_value": 1e-10,
+                    "max_percentile_value": 99,
+                    "ltr_min_threshold": 0,
+                    "feature_start_index": 1,
+                    "feature_end_index": 62,
+                    "feature_rollout_percentage": 10,
+                    "catalog_min_size": 34,
+                    "default_ad_segment_draft": "missing:0_order_user_control",
+                    "ranking_function": [
+                    {
+                    "w": 0.6,
+                    "parameters": [
+                    "ltr"
+                    ],
+                    "min": 0,
+                    "max": 1
+                    },
+                    {
+                    "w": 0.4,
+                    "parameters": [
+                    "cpc"
+                    ],
+                    "min": 0.14,
+                    "max": 1.05
+                    }
+                    ]
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "sscat_based_interaction_similarity",
+                    "algo_variant_id": "scaleup",
+                    "online_cg_host_id": "ad",
+                    "limit": 2500
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                  scaleup-percent: 0
+                new-scaleup:
+                  config-bundle: '{
+                      "generate_feed_on_the_fly": {
+                        "config": {
+                          "enabled": true,
+                          "name": "rv_substitute_ad_new_scaleup",
+                          "is_not_user_level": false,
+                          "result_component": "rv_substitute_ad_cursor_builder",
+                          "dag_config": {
+                            "rv_substitute_online_cg_connector": [
+                              "catalog_visibility_filter"
+                            ],
+                            "catalog_visibility_filter": [
+                              "model_proxy_connector"
+                            ],
+                            "model_proxy_connector": [
+                              "slotted_feed_merger"
+                            ],
+                            "slotted_feed_merger": [
+                              "catalog_validator"
+                            ],
+                            "catalog_validator": [
+                              "rv_substitute_ad_cursor_builder"
+                            ]
+                          },
+                          "component_config": {
+                            "model_proxy_connector": {
+                              "host_id": "rv-substitute-ad-scaleup",
+                              "config_id": "rv-ad-scale-up",
+                              "batch_size": 200,
+                              "merge_strategy_on_failure": "shuffle",
+                              "merge_config": {
+                                "max_merge_item": "200"
+                              },
+                              "is_soft_failure_enabled": true,
+                              "skip_mp_call": false,
+                              "failure_threshold_percent": 60,
+                              "candidate_features": {
+                                "scores": [
+                                  {
+                                    "key_to_fetch": "score",
+                                    "model_proxy_feature_name": "catalog:score"
+                                  }
+                                ],
+                                "metadata": [
+                                  {
+                                    "key_to_fetch": "source_cg",
+                                    "model_proxy_feature_name": "catalog:source"
+                                  }
+                                ]
+                              },
+                              "meta_scores": [
+                                {
+                                  "key_to_fetch": "cpc_score",
+                                  "response_field": "cpc_score",
+                                  "float_precision": 4
+                                }
+                              ]
+                            },
+                            "rv_substitute_online_cg_connector": {
+                              "algo_name": "sscat_based_interaction_similarity",
+                              "algo_variant_id": "scaleup",
+                              "online_cg_host_id": "ad",
+                              "limit": 2500,
+                              "sub_tenant": "old_ad",
+                              "candidate_context_to_add": {
+                                "sub_tenant": "old_ad"
+                              }
+                            },
+                            "catalog_visibility_filter": {
+                              "filters": [
+                                "ads_filter"
+                              ],
+                              "requested_limit_multiplier": 5
+                            },
+                            "slotted_feed_merger": {
+                              "default_slots": [
+                                2,
+                                3,
+                                5,
+                                10,
+                                11,
+                                14,
+                                15,
+                                17,
+                                20,
+                                23,
+                                26,
+                                27,
+                                30,
+                                31,
+                                34
+                              ],
+                              "default_preferred_sub_tenants": [
+                                "old_ad"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }'
+                  logging-percent: 1
+                  scaleup-percent: 100
+          logged-in:
+            multi-experiment-data:
+              pdp_reco_ad_exp:
+                config-filter-type: feed_type:tenant_context:service_tag
+                enabled: false
+            variant-config:
+              experiment:
+                rv_ad_control:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_substitute_ad_control",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_ad_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "ad_live_filter"
+                    ],
+                    "ad_live_filter": [
+                    "rv_substitute_ad_model_proxy_connector"
+                    ],
+                    "rv_substitute_ad_model_proxy_connector": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_ad_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_ad_model_proxy_connector": {
+                    "host_id": "rv-substitute-ad-scaleup",
+                    "config_id": "rv-ad-scale-up",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "ranking_score_equation": "multiplicative",
+                    "ctr_weight": 0.25,
+                    "cvr_weight": 0.75,
+                    "min_percentile_value": 1e-10,
+                    "max_percentile_value": 99,
+                    "ltr_min_threshold": 0,
+                    "feature_start_index": 1,
+                    "feature_end_index": 62,
+                    "feature_rollout_percentage": 10,
+                    "catalog_min_size": 34,
+                    "default_ad_segment_draft": "missing:0_order_user_control",
+                    "ranking_function": [
+                    {
+                    "w": 0.6,
+                    "parameters": [
+                    "ltr"
+                    ],
+                    "min": 0,
+                    "max": 1
+                    },
+                    {
+                    "w": 0.4,
+                    "parameters": [
+                    "cpc"
+                    ],
+                    "min": 0.14,
+                    "max": 1.05
+                    }
+                    ]
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "sscat_based_interaction_similarity",
+                    "algo_variant_id": "scaleup",
+                    "online_cg_host_id": "ad",
+                    "limit": 2500
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                rv_ad_cpc_discounting:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_substitute_ad_cpc_discounting",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_ad_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "ad_live_filter"
+                    ],
+                    "ad_live_filter": [
+                    "rv_substitute_ad_model_proxy_connector"
+                    ],
+                    "rv_substitute_ad_model_proxy_connector": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_ad_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_ad_model_proxy_connector": {
+                    "host_id": "rv-substitute-ad-scaleup",
+                    "config_id": "rv-ad-scale-up",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "ranking_score_equation": "multiplicative",
+                    "ctr_weight": 0.25,
+                    "cvr_weight": 0.75,
+                    "min_percentile_value": 1e-10,
+                    "max_percentile_value": 99,
+                    "ltr_min_threshold": 0,
+                    "feature_start_index": 1,
+                    "feature_end_index": 62,
+                    "feature_rollout_percentage": 10,
+                    "catalog_min_size": 34,
+                    "default_ad_segment_draft": "missing:0_order_user_control",
+                    "ranking_function": [
+                    {
+                    "w": 0.6,
+                    "parameters": [
+                    "ltr"
+                    ],
+                    "min": 0,
+                    "max": 1
+                    },
+                    {
+                    "w": 0.4,
+                    "parameters": [
+                    "cpc"
+                    ],
+                    "min": 0.14,
+                    "max": 1.05
+                    }
+                    ]
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "sscat_based_interaction_similarity",
+                    "algo_variant_id": "scaleup",
+                    "online_cg_host_id": "ad",
+                    "limit": 2500
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+              override:
+                override-config:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_substitute_ad_override",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_ad_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "ad_live_filter"
+                    ],
+                    "ad_live_filter": [
+                    "model_proxy_connector"
+                    ],
+                    "model_proxy_connector": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_ad_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "model_proxy_connector": {
+                    "host_id": "rv-substitute-ad-scaleup",
+                    "config_id": "rv-ad-scale-up",
+                    "batch_size": 250,
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "skip_mp_call": false,
+                    "failure_threshold_percent": 60,
+                    "candidate_features": {
+                    "scores": [
+                    {
+                    "key_to_fetch": "score",
+                    "model_proxy_feature_name": "catalog:score"
+                    }
+                    ],
+                    "metadata": [
+                    {
+                    "key_to_fetch": "source_cg",
+                    "model_proxy_feature_name": "catalog:source"
+                    }
+                    ]
+                    },
+                    "meta_scores": [
+                    {
+                    "key_to_fetch": "cpc_score",
+                    "response_field": "cpc_score",
+                    "float_precision": 4
+                    }
+                    ]
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "sscat_based_interaction_similarity",
+                    "algo_variant_id": "scaleup",
+                    "online_cg_host_id": "ad",
+                    "limit": 2500
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                user-ids: 286672406,135265153
+              scaleup:
+                current-scaleup:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_substitute_ad_scaleup",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_ad_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "ad_live_filter"
+                    ],
+                    "ad_live_filter": [
+                    "rv_substitute_ad_model_proxy_connector"
+                    ],
+                    "rv_substitute_ad_model_proxy_connector": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_ad_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_ad_model_proxy_connector": {
+                    "host_id": "rv-substitute-ad-scaleup",
+                    "config_id": "rv-ad-scale-up",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "ranking_score_equation": "multiplicative",
+                    "ctr_weight": 0.25,
+                    "cvr_weight": 0.75,
+                    "min_percentile_value": 1e-10,
+                    "max_percentile_value": 99,
+                    "ltr_min_threshold": 0,
+                    "feature_start_index": 1,
+                    "feature_end_index": 62,
+                    "feature_rollout_percentage": 10,
+                    "catalog_min_size": 34,
+                    "default_ad_segment_draft": "missing:0_order_user_control",
+                    "ranking_function": [
+                    {
+                    "w": 0.6,
+                    "parameters": [
+                    "ltr"
+                    ],
+                    "min": 0,
+                    "max": 1
+                    },
+                    {
+                    "w": 0.4,
+                    "parameters": [
+                    "cpc"
+                    ],
+                    "min": 0.14,
+                    "max": 1.05
+                    }
+                    ]
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "sscat_based_interaction_similarity",
+                    "algo_variant_id": "scaleup",
+                    "online_cg_host_id": "ad",
+                    "limit": 2500
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                  scaleup-percent: 0
+                new-scaleup:
+                  config-bundle: '{
+                      "generate_feed_on_the_fly": {
+                        "config": {
+                          "enabled": true,
+                          "name": "rv_substitute_ad_new_scaleup",
+                          "is_not_user_level": false,
+                          "result_component": "rv_substitute_ad_cursor_builder",
+                          "dag_config": {
+                            "rv_substitute_online_cg_connector": [
+                              "catalog_visibility_filter"
+                            ],
+                            "catalog_visibility_filter": [
+                              "model_proxy_connector"
+                            ],
+                            "model_proxy_connector": [
+                              "slotted_feed_merger"
+                            ],
+                            "slotted_feed_merger": [
+                              "catalog_validator"
+                            ],
+                            "catalog_validator": [
+                              "rv_substitute_ad_cursor_builder"
+                            ]
+                          },
+                          "component_config": {
+                            "model_proxy_connector": {
+                              "host_id": "rv-substitute-ad-scaleup",
+                              "config_id": "rv-ad-scale-up",
+                              "batch_size": 200,
+                              "merge_strategy_on_failure": "shuffle",
+                              "merge_config": {
+                                "max_merge_item": "200"
+                              },
+                              "is_soft_failure_enabled": true,
+                              "skip_mp_call": false,
+                              "failure_threshold_percent": 60,
+                              "candidate_features": {
+                                "scores": [
+                                  {
+                                    "key_to_fetch": "score",
+                                    "model_proxy_feature_name": "catalog:score"
+                                  }
+                                ],
+                                "metadata": [
+                                  {
+                                    "key_to_fetch": "source_cg",
+                                    "model_proxy_feature_name": "catalog:source"
+                                  }
+                                ]
+                              },
+                              "meta_scores": [
+                                {
+                                  "key_to_fetch": "cpc_score",
+                                  "response_field": "cpc_score",
+                                  "float_precision": 4
+                                }
+                              ]
+                            },
+                            "rv_substitute_online_cg_connector": {
+                              "algo_name": "sscat_based_interaction_similarity",
+                              "algo_variant_id": "scaleup",
+                              "online_cg_host_id": "ad",
+                              "limit": 2500,
+                              "sub_tenant": "old_ad",
+                              "candidate_context_to_add": {
+                                "sub_tenant": "old_ad"
+                              }
+                            },
+                            "catalog_visibility_filter": {
+                              "filters": [
+                                "ads_filter"
+                              ],
+                              "requested_limit_multiplier": 5
+                            },
+                            "slotted_feed_merger": {
+                              "default_slots": [
+                                2,
+                                3,
+                                5,
+                                10,
+                                11,
+                                14,
+                                15,
+                                17,
+                                20,
+                                23,
+                                26,
+                                27,
+                                30,
+                                31,
+                                34
+                              ],
+                              "default_preferred_sub_tenants": [
+                                "old_ad"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }'
+                  logging-percent: 1
+                  scaleup-percent: 100
+        exploit:
+          anonymous:
+            variant-config:
+              scaleup:
+                current-scaleup:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_substitute_exploit_scaleup",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_exploit_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "rv_substitute_exploit_model_proxy_connector"
+                    ],
+                    "rv_substitute_exploit_model_proxy_connector": [
+                    "rv_substitute_exploit_organic_ltr_ranker"
+                    ],
+                    "rv_substitute_exploit_organic_ltr_ranker": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_exploit_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_exploit_organic_ltr_ranker": {
+                    "ltr_min_threshold": 0,
+                    "catalog_min_size": 34
+                    },
+                    "rv_substitute_exploit_model_proxy_connector": {
+                    "host_id": "rv-substitute-exploit-scaleup",
+                    "config_id": "rv-organic-scale-up",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "batch_size": 100
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "interaction_based_vss_similarity_v2",
+                    "algo_variant_id": "rv-substitute",
+                    "online_cg_host_id": "exploit",
+                    "limit": 2500
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 0
+                  scaleup-percent: 100
+          logged-in:
+            multi-experiment-data:
+              recently_viewed_v2_substitute_experiment:
+                config-filter-type: feed_type:service_tag
+                enabled: false
+              rv-subs-ngst-exp:
+                config-filter-type: feed_type:service_tag
+                enabled: false
+            variant-config:
+              experiment:
+                rv-exploit-exp-feed-length-50:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_substitute_exploit_exp_length_50",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_exploit_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "rv_substitute_exploit_model_proxy_connector"
+                    ],
+                    "rv_substitute_exploit_model_proxy_connector": [
+                    "rv_substitute_exploit_organic_ltr_ranker"
+                    ],
+                    "rv_substitute_exploit_organic_ltr_ranker": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_exploit_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_exploit_organic_ltr_ranker": {
+                    "ltr_min_threshold": 0,
+                    "catalog_min_size": 50
+                    },
+                    "rv_substitute_exploit_model_proxy_connector": {
+                    "host_id": "rv-substitute-exploit-scaleup",
+                    "config_id": "rv-organic-scale-up",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "batch_size": 100
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "interaction_based_vss_similarity_v2",
+                    "algo_variant_id": "rv-substitute",
+                    "online_cg_host_id": "exploit",
+                    "limit": 2500
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                rv-exploit-exp-feed-length-70:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_substitute_exploit_exp_length_70",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_exploit_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "rv_substitute_exploit_model_proxy_connector"
+                    ],
+                    "rv_substitute_exploit_model_proxy_connector": [
+                    "rv_substitute_exploit_organic_ltr_ranker"
+                    ],
+                    "rv_substitute_exploit_organic_ltr_ranker": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_exploit_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_exploit_organic_ltr_ranker": {
+                    "ltr_min_threshold": 0,
+                    "catalog_min_size": 70
+                    },
+                    "rv_substitute_exploit_model_proxy_connector": {
+                    "host_id": "rv-substitute-exploit-scaleup",
+                    "config_id": "rv-organic-scale-up",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "batch_size": 100
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "interaction_based_vss_similarity_v2",
+                    "algo_variant_id": "rv-substitute",
+                    "online_cg_host_id": "exploit",
+                    "limit": 2500
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                rv-exploit-experiment-merlin:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_substitute_exploit_merlin_experiment",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_exploit_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "rv_substitute_exploit_model_proxy_connector"
+                    ],
+                    "rv_substitute_exploit_model_proxy_connector": [
+                    "rv_substitute_exploit_organic_ltr_ranker"
+                    ],
+                    "rv_substitute_exploit_organic_ltr_ranker": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_exploit_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_exploit_organic_ltr_ranker": {
+                    "ltr_min_threshold": 0,
+                    "catalog_min_size": 34
+                    },
+                    "rv_substitute_exploit_model_proxy_connector": {
+                    "host_id": "rv-substitute-exploit-scaleup",
+                    "config_id": "rv-organic-scale-up",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "batch_size": 100
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "interaction_based_vss_similarity_merlin",
+                    "algo_variant_id": "merlin_ps_iter1_content",
+                    "online_cg_host_id": "exploit",
+                    "limit": 2500
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                rv-exploit-merlin-personalised-ranker:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_substitute_exploit_merlin_personalised_ranker_exp",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_exploit_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "rv_substitute_exploit_model_proxy_connector"
+                    ],
+                    "rv_substitute_exploit_model_proxy_connector": [
+                    "rv_substitute_exploit_organic_ltr_ranker"
+                    ],
+                    "rv_substitute_exploit_organic_ltr_ranker": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_exploit_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_exploit_organic_ltr_ranker": {
+                    "ltr_min_threshold": 0,
+                    "catalog_min_size": 34
+                    },
+                    "rv_substitute_exploit_model_proxy_connector": {
+                    "host_id": "rv-substitute-exploit-experiment",
+                    "config_id": "pdp-organic-experiment-dl-scale-up-replica",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "batch_size": 100
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "interaction_based_vss_similarity_merlin",
+                    "algo_variant_id": "merlin_ps_iter1_content",
+                    "online_cg_host_id": "exploit",
+                    "limit": 2500
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                rv-exploit-mixed-feed-exp:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_substitute_exploit_mixed_exp",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_exploit_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector:1": [
+                    "rv_substitute_organic_aggregated_model_proxy_connector"
+                    ],
+                    "rv_substitute_online_cg_connector:2": [
+                    "rv_substitute_organic_aggregated_model_proxy_connector"
+                    ],
+                    "rv_substitute_organic_aggregated_model_proxy_connector": [
+                    "rv_substitute_exploit_organic_ltr_ranker"
+                    ],
+                    "rv_substitute_exploit_organic_ltr_ranker": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_exploit_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_exploit_organic_ltr_ranker": {
+                    "ltr_min_threshold": 0,
+                    "catalog_min_size": 34
+                    },
+                    "rv_substitute_organic_aggregated_model_proxy_connector": {
+                    "host_id": "rv-substitute-exploit-experiment",
+                    "config_id": "rv-organic-ngst-v1",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "batch_size": 200
+                    },
+                    "rv_substitute_online_cg_connector:1": {
+                    "algo_name": "interaction_based_vss_similarity_v2",
+                    "algo_variant_id": "rv-substitute",
+                    "online_cg_host_id": "exploit",
+                    "limit": 2500
+                    },
+                    "rv_substitute_online_cg_connector:2": {
+                    "algo_name": "interaction_based_vss_similarity_nongst",
+                    "algo_variant_id": "rv-substitute",
+                    "online_cg_host_id": "exploit",
+                    "limit": 2500
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                rv-exploit-personalised-ranker:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_substitute_exploit_personalised_ranker_exp",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_exploit_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "rv_substitute_exploit_model_proxy_connector"
+                    ],
+                    "rv_substitute_exploit_model_proxy_connector": [
+                    "rv_substitute_exploit_organic_ltr_ranker"
+                    ],
+                    "rv_substitute_exploit_organic_ltr_ranker": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_exploit_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_exploit_organic_ltr_ranker": {
+                    "ltr_min_threshold": 0,
+                    "catalog_min_size": 34
+                    },
+                    "rv_substitute_exploit_model_proxy_connector": {
+                    "host_id": "rv-substitute-exploit-experiment",
+                    "config_id": "pdp-organic-experiment-dl-scale-up-replica",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "batch_size": 100
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "interaction_based_vss_similarity_v2",
+                    "algo_variant_id": "rv-substitute",
+                    "online_cg_host_id": "exploit",
+                    "limit": 2500
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                wishlist-exploit-subs-personalisation-ranker-exp:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_substitute_exploit_scaleup",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_exploit_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "rv_substitute_exploit_model_proxy_connector"
+                    ],
+                    "rv_substitute_exploit_model_proxy_connector": [
+                    "rv_substitute_exploit_organic_ltr_ranker"
+                    ],
+                    "rv_substitute_exploit_organic_ltr_ranker": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_exploit_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_exploit_organic_ltr_ranker": {
+                    "ltr_min_threshold": 0,
+                    "catalog_min_size": 34
+                    },
+                    "rv_substitute_exploit_model_proxy_connector": {
+                    "host_id": "rv-substitute-exploit-scaleup",
+                    "config_id": "rv-organic-scale-up",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "batch_size": 100
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "interaction_based_vss_similarity_v2",
+                    "algo_variant_id": "rv-substitute",
+                    "online_cg_host_id": "exploit",
+                    "limit": 2500
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                wishlist-reco-exploit-rv-ranker-exp:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_substitute_exploit_scaleup",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_exploit_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "rv_substitute_exploit_model_proxy_connector"
+                    ],
+                    "rv_substitute_exploit_model_proxy_connector": [
+                    "rv_substitute_exploit_organic_ltr_ranker"
+                    ],
+                    "rv_substitute_exploit_organic_ltr_ranker": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_exploit_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_exploit_organic_ltr_ranker": {
+                    "ltr_min_threshold": 0,
+                    "catalog_min_size": 34
+                    },
+                    "rv_substitute_exploit_model_proxy_connector": {
+                    "host_id": "rv-substitute-exploit-scaleup",
+                    "config_id": "rv-organic-scale-up",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "batch_size": 100
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "interaction_based_vss_similarity_v2",
+                    "algo_variant_id": "rv-substitute",
+                    "online_cg_host_id": "exploit",
+                    "limit": 2500
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+              scaleup:
+                current-scaleup:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_substitute_exploit_scaleup",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_exploit_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "rv_substitute_exploit_model_proxy_connector"
+                    ],
+                    "rv_substitute_exploit_model_proxy_connector": [
+                    "rv_substitute_exploit_organic_ltr_ranker"
+                    ],
+                    "rv_substitute_exploit_organic_ltr_ranker": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_exploit_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_exploit_organic_ltr_ranker": {
+                    "ltr_min_threshold": 0,
+                    "catalog_min_size": 34
+                    },
+                    "rv_substitute_exploit_model_proxy_connector": {
+                    "host_id": "rv-substitute-exploit-scaleup",
+                    "config_id": "rv-organic-scale-up",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60,
+                    "batch_size": 100
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "interaction_based_vss_similarity_v2",
+                    "algo_variant_id": "rv-substitute",
+                    "online_cg_host_id": "exploit",
+                    "limit": 2500
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                  scaleup-percent: 100
+        explore:
+          anonymous:
+            variant-config:
+              scaleup:
+                current-scaleup:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_anonymous_empty_feed",
+                    "is_not_user_level": false,
+                    "result_component": "empty_feed",
+                    "dag_config": {
+                    "empty_feed": []
+                    },
+                    "component_config": {}
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                  scaleup-percent: 100
+          logged-in:
+            multi-experiment-data:
+              ct_qct_rv_slots:
+                config-filter-type: feed_type:service_tag
+                enabled: false
+              explore_holdout:
+                config-filter-type: feed_type:service_tag
+                enabled: false
+              ct_holdout_exp_new:
+                config-filter-type: feed_type:service_tag
+                enabled: true
+              explore_pdp_integration:
+                config-filter-type: feed_type:service_tag
+                enabled: true
+              ct_search_orchestrator_exp:
+                config-filter-type: feed_type:service_tag
+                enabled: true
+            multi-user-segment-data:
+              segment_skip_ct_qct:
+                enabled: true
+            variant-config:
+              holdout:
+                rv-holdout-empty-feed:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_holdout_ct_qct",
+                    "is_not_user_level": false,
+                    "result_component": "empty_feed",
+                    "dag_config": {
+                    "empty_feed": []
+                    },
+                    "component_config": {}
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+              override:
+                override-config:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_substitute_override_generate",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_exploit_cursor_builder",
+                    "feed_generation_eligibility_checker": "rv_substitute_exploit_feed_generation_eligibility_checker:1",
+                    "dag_config": {
+                    "rv_substitute_exploit_cache_feed_getter": [
+                    "rv_substitute_exploit_feed_generation_eligibility_checker:1:on_success",
+                    "rv_substitute_exploit_feed_generation_eligibility_checker:2:on_failure"
+                    ],
+                    "rv_substitute_exploit_feed_generation_eligibility_checker:1:on_success":
+                    [
+                    "rv_substitute_online_cg_connector"
+                    ],
+                    "rv_substitute_exploit_feed_generation_eligibility_checker:2:on_failure":
+                    [
+                    "catalog_validator"
+                    ],
+                    "rv_substitute_online_cg_connector": [
+                    "rv_substitute_exploit_model_proxy_connector"
+                    ],
+                    "rv_substitute_exploit_model_proxy_connector": [
+                    "rv_substitute_exploit_organic_ltr_ranker"
+                    ],
+                    "rv_substitute_exploit_organic_ltr_ranker": [
+                    "rv_substitute_exploit_cache_feed_setter"
+                    ],
+                    "rv_substitute_exploit_cache_feed_setter": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_exploit_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "rv_substitute_exploit_cache_feed_setter": {
+                    "cache_version": "1",
+                    "cache_ttl_in_secs": 1
+                    },
+                    "rv_substitute_exploit_feed_generation_eligibility_checker:1":
+                    {
+                    "cache_version": "1"
+                    },
+                    "rv_substitute_exploit_feed_generation_eligibility_checker:2":
+                    {
+                    "cache_version": "1"
+                    },
+                    "rv_substitute_exploit_cache_feed_getter": {
+                    "cache_version": "1"
+                    },
+                    "rv_substitute_exploit_organic_ltr_ranker": {
+                    "ltr_min_threshold": 0,
+                    "catalog_min_size": 34
+                    },
+                    "rv_substitute_exploit_model_proxy_connector": {
+                    "host_id": "rv-substitute-exploit-scaleup",
+                    "config_id": "rv-organic-scale-up",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "interaction_based_vss_similarity",
+                    "algo_variant_id": "rv-substitute",
+                    "online_cg_host_id": "exploit",
+                    "limit": 2500
+                    }
+                    }
+                    }
+                    }
+                    }'
+              scaleup:
+                current-scaleup:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_substitute_explore_scaleup",
+                    "is_not_user_level": false,
+                    "result_component": "rv_substitute_explore_cursor_builder",
+                    "dag_config": {
+                    "rv_substitute_online_cg_connector": [
+                    "rv_substitute_explore_model_proxy_connector"
+                    ],
+                    "rv_substitute_explore_model_proxy_connector": [
+                    "ct_budget_check"
+                    ],
+                    "ct_budget_check": [
+                    "catalog_validator"
+                    ],
+                    "catalog_validator": [
+                    "rv_substitute_explore_cursor_builder"
+                    ]
+                    },
+                    "component_config": {
+                    "ct_budget_check": {
+                    "budget_feed_type": "catalog_recommendation"
+                    },
+                    "rv_substitute_explore_model_proxy_connector": {
+                    "host_id": "rv-substitute-explore-scaleup",
+                    "config_id": "rv-ct-scale-up",
+                    "merge_strategy_on_failure": "shuffle",
+                    "merge_config": {
+                    "max_merge_item": "500"
+                    },
+                    "is_soft_failure_enabled": true,
+                    "failure_threshold_percent": 60
+                    },
+                    "rv_substitute_online_cg_connector": {
+                    "algo_name": "interacted_vss_similar_catalog",
+                    "algo_variant_id": "default",
+                    "online_cg_host_id": "explore",
+                    "limit": 2500
+                    }
+                    }
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                  scaleup-percent: 100
+              user-segment:
+                segment_skip_ct_qct:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                    "config": {
+                    "enabled": true,
+                    "name": "rv_segment_skip_ct_qct",
+                    "is_not_user_level": false,
+                    "result_component": "empty_feed",
+                    "dag_config": {
+                    "empty_feed": []
+                    },
+                    "component_config": {}
+                    }
+                    }
+                    }'
+                  logging-percent: 1
+                  scaleup-percent: 100
+    cross-sell:
+      default:
+        exploit:
+          logged-in:
+            multi-experiment-data:
+              cross_sell_ocp:
+                config-filter-type: feed_type:service_tag
+                enabled: true
+            variant-config:
+              experiment:
+                cross-sell-two-tower-exp:
+                  config-bundle: '{
+                    "generate_feed_on_the_fly": {
+                      "config": {
+                        "enabled": true,
+                        "name": "cross_sell_exploit_feed_exp_two_tower",
+                        "is_not_user_level": false,
+                        "result_component": "cross_sell_cursor_builder",
+                        "dag_config": {
+                          "cross_sell_cache_feed_getter": [
+                            "cross_sell_fg_eligibility_checker:1:on_success",
+                            "cross_sell_fg_eligibility_checker:2:on_failure"
+                          ],
+                          "cross_sell_fg_eligibility_checker:1:on_success": [
+                            "cross_sell_online_cg_connector:1",
+                            "cross_sell_online_cg_connector:2"
+                          ],
+                          "cross_sell_fg_eligibility_checker:2:on_failure": [
+                            "clicked_sscat_feed_mapper"
+                          ],
+                          "cross_sell_online_cg_connector:1": [
+                            "clicked_sscat_feed_mapper"
+                          ],
+                          "cross_sell_online_cg_connector:2": [
+                            "clicked_sscat_feed_mapper"
+                          ],
+                          "clicked_sscat_feed_mapper": [
+                            "catalog_validator"
+                          ],
+                          "catalog_validator": [
+                            "cross_sell_cursor_builder"
+                          ]
+                        },
+                        "component_config": {
+                          "cross_sell_online_cg_connector:1": {
+                            "algo_name": "vector_similarity_search",
+                            "algo_variant_id": "default",
+                            "online_cg_host_id": "exploit",
+                            "limit": 500
+                          },
+                          "cross_sell_online_cg_connector:2": {
+                            "algo_name": "ds_batch",
+                            "algo_variant_id": "two_tower",
+                            "online_cg_host_id": "exploit",
+                            "limit": 500
+                          },
+                          "clicked_sscat_feed_mapper": {
+                            "cache_key_version": "v3",
+                            "source_priority": [
+                              "vector_similarity_search",
+                              "ds_batch"
+                            ]
+                          },
+                          "cross_sell_cache_feed_getter": {
+                            "cache_version": "1",
+                            "prefix": "CSE",
+                            "candidate_context_keys": [
+                              "group_id",
+                              "source_cg",
+                              "sscat_id",
+                              "sscat_name",
+                              "product_id",
+                              "parent_product_id",
+                              "parent_catalog_id"
+                            ],
+                            "meta_score_keys_to_store": [
+                              "score"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "generate_widget_on_the_fly": {
+                      "config": {
+                        "enabled": true,
+                        "name": "cross_sell_exploit_widget_exp_two_tower",
+                        "is_not_user_level": false,
+                        "result_component": "cross_sell_complementary_sscat_mapper",
+                        "dag_config": {
+                          "cross_sell_cache_feed_getter": [
+                            "cross_sell_fg_eligibility_checker:1:on_success",
+                            "cross_sell_fg_eligibility_checker:2:on_failure"
+                          ],
+                          "cross_sell_fg_eligibility_checker:1:on_success": [
+                            "cross_sell_online_cg_connector:1",
+                            "cross_sell_online_cg_connector:2"
+                          ],
+                          "cross_sell_fg_eligibility_checker:2:on_failure": [
+                            "catalog_validator"
+                          ],
+                          "cross_sell_online_cg_connector:1": [
+                            "catalog_validator"
+                          ],
+                          "cross_sell_online_cg_connector:2": [
+                            "catalog_validator"
+                          ],
+                          "catalog_validator": [
+                            "cross_sell_cache_feed_setter"
+                          ],
+                          "cross_sell_cache_feed_setter": [
+                            "cross_sell_complementary_sscat_mapper"
+                          ]
+                        },
+                        "component_config": {
+                          "cross_sell_online_cg_connector:1": {
+                            "algo_name": "vector_similarity_search",
+                            "algo_variant_id": "default",
+                            "online_cg_host_id": "exploit",
+                            "limit": 500
+                          },
+                          "cross_sell_online_cg_connector:2": {
+                            "algo_name": "ds_batch",
+                            "algo_variant_id": "two_tower",
+                            "online_cg_host_id": "exploit",
+                            "limit": 500
+                          },
+                          "cross_sell_complementary_sscat_mapper": {
+                            "cache_key_version": "v3",
+                            "weights_per_group": 1,
+                            "source_priority": [
+                              "vector_similarity_search",
+                              "ds_batch"
+                            ]
+                          },
+                          "cross_sell_cache_feed_setter": {
+                            "cache_version": "1",
+                            "prefix": "CSE",
+                            "context_keys_to_store": [
+                              "group_id",
+                              "source_cg",
+                              "sscat_id",
+                              "sscat_name",
+                              "product_id",
+                              "parent_product_id",
+                              "parent_catalog_id"
+                            ],
+                            "candidate_score_keys": [
+                              "score"
+                            ]
+                          },
+                          "cross_sell_cache_feed_getter": {
+                            "cache_version": "1",
+                            "prefix": "CSE",
+                            "candidate_context_keys": [
+                              "group_id",
+                              "source_cg",
+                              "sscat_id",
+                              "sscat_name",
+                              "product_id",
+                              "parent_product_id",
+                              "parent_catalog_id"
+                            ],
+                            "meta_score_keys_to_store": [
+                              "score"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }'
+                  logging-percent: 1
+              scaleup:
+                current-scaleup:
+                  config-bundle: '{
+                      "generate_feed_on_the_fly": {
+                        "config": {
+                          "enabled": true,
+                          "name": "cross_sell_exploit_scaleup",
+                          "is_not_user_level": false,
+                          "result_component": "cross_sell_cursor_builder",
+                          "dag_config": {
+                            "cross_sell_cache_feed_getter": [
+                              "cross_sell_fg_eligibility_checker:1:on_success",
+                              "cross_sell_fg_eligibility_checker:2:on_failure"
+                            ],
+                            "cross_sell_fg_eligibility_checker:1:on_success": [
+                              "cross_sell_online_cg_connector:1",
+                              "cross_sell_online_cg_connector:2"
+                            ],
+                            "cross_sell_fg_eligibility_checker:2:on_failure": [
+                              "clicked_sscat_feed_mapper"
+                            ],
+                            "cross_sell_online_cg_connector:1": [
+                              "clicked_sscat_feed_mapper"
+                            ],
+                            "cross_sell_online_cg_connector:2": [
+                              "clicked_sscat_feed_mapper"
+                            ],
+                            "clicked_sscat_feed_mapper": [
+                              "catalog_validator"
+                            ],
+                            "catalog_validator": [
+                              "cross_sell_cursor_builder"
+                            ]
+                          },
+                          "component_config": {
+                            "cross_sell_online_cg_connector:1": {
+                              "algo_name": "vector_similarity_search",
+                              "algo_variant_id": "default",
+                              "online_cg_host_id": "exploit",
+                              "limit": 500
+                            },
+                            "cross_sell_online_cg_connector:2": {
+                              "algo_name": "ds_batch",
+                              "algo_variant_id": "default",
+                              "online_cg_host_id": "exploit",
+                              "limit": 500
+                            },
+                            "clicked_sscat_feed_mapper": {
+                              "cache_key_version": "v3",
+                              "source_priority": [
+                                "vector_similarity_search",
+                                "ds_batch"
+                              ]
+                            },
+                            "cross_sell_cache_feed_getter": {
+                              "cache_version": "1",
+                              "prefix": "CSE",
+                              "candidate_context_keys": [
+                                "group_id",
+                                "source_cg",
+                                "sscat_id",
+                                "sscat_name",
+                                "product_id",
+                                "parent_product_id",
+                                "parent_catalog_id"
+                              ],
+                              "meta_score_keys_to_store": [
+                                "score"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "generate_widget_on_the_fly": {
+                        "config": {
+                          "enabled": true,
+                          "name": "cross_sell_exploit_scaleup",
+                          "is_not_user_level": false,
+                          "result_component": "cross_sell_complementary_sscat_mapper",
+                          "dag_config": {
+                            "cross_sell_cache_feed_getter": [
+                              "cross_sell_fg_eligibility_checker:1:on_success",
+                              "cross_sell_fg_eligibility_checker:2:on_failure"
+                            ],
+                            "cross_sell_fg_eligibility_checker:1:on_success": [
+                              "cross_sell_online_cg_connector:1",
+                              "cross_sell_online_cg_connector:2"
+                            ],
+                            "cross_sell_fg_eligibility_checker:2:on_failure": [
+                              "catalog_validator"
+                            ],
+                            "cross_sell_online_cg_connector:1": [
+                              "catalog_validator"
+                            ],
+                            "cross_sell_online_cg_connector:2": [
+                              "catalog_validator"
+                            ],
+                            "catalog_validator": [
+                              "cross_sell_cache_feed_setter"
+                            ],
+                            "cross_sell_cache_feed_setter": [
+                              "cross_sell_complementary_sscat_mapper"
+                            ]
+                          },
+                          "component_config": {
+                            "cross_sell_online_cg_connector:1": {
+                              "algo_name": "vector_similarity_search",
+                              "algo_variant_id": "default",
+                              "online_cg_host_id": "exploit",
+                              "limit": 500
+                            },
+                            "cross_sell_online_cg_connector:2": {
+                              "algo_name": "ds_batch",
+                              "algo_variant_id": "default",
+                              "online_cg_host_id": "exploit",
+                              "limit": 500
+                            },
+                            "cross_sell_complementary_sscat_mapper": {
+                              "cache_key_version": "v3",
+                              "weights_per_group": 1,
+                              "source_priority": [
+                                "vector_similarity_search",
+                                "ds_batch"
+                              ]
+                            },
+                            "cross_sell_cache_feed_setter": {
+                              "cache_version": "1",
+                              "prefix": "CSE",
+                              "context_keys_to_store": [
+                                "group_id",
+                                "source_cg",
+                                "sscat_id",
+                                "sscat_name",
+                                "product_id",
+                                "parent_product_id",
+                                "parent_catalog_id"
+                              ],
+                              "candidate_score_keys": [
+                                "score"
+                              ]
+                            },
+                            "cross_sell_cache_feed_getter": {
+                              "cache_version": "1",
+                              "prefix": "CSE",
+                              "candidate_context_keys": [
+                                "group_id",
+                                "source_cg",
+                                "sscat_id",
+                                "sscat_name",
+                                "product_id",
+                                "parent_product_id",
+                                "parent_catalog_id"
+                              ],
+                              "meta_score_keys_to_store": [
+                                "score"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }'
+                  logging-percent: 1
+                  scaleup-percent: 100
+    rv-interactions:
+          rv-interactions-v1:
+            exploit:
+              logged-in:
+                variant-config:
+                  override:  
+                    override-config:
+                      config-bundle: '{
+                        "generate_feed_on_the_fly": {
+                          "config": {
+                            "enabled": true,
+                            "name": "rv_interactions_feed_v1",
+                            "is_not_user_level": false,
+                            "result_component": "catalog_validator",
+                            "dag_config": {
+                              "rv_substitute_online_cg_connector": ["feature_enricher"],
+                              "feature_enricher": ["rv_sscat_filter"],
+                              "rv_sscat_filter": ["rv_category_click_recency_ranker"],
+                              "rv_category_click_recency_ranker": ["rv_feed_adapter"],
+                              "rv_feed_adapter": ["catalog_validator"]
+                            },
+                            "component_config": {
+                              "rv_substitute_online_cg_connector": {
+                                "algo_name": "rv_interactions",
+                                "algo_variant_id": "rv_widget_rvcg",
+                                "online_cg_host_id": "exploit",
+                                "limit": 2000
+                              },
+                              "feature_enricher": {
+                                "orion_version": 1,
+                                "entity_label": "catalog",
+                                "key_schema": "catalog_id",
+                                "feature_group": "realtime_int64",
+                                "feature_labels": ["sscat_id"],
+                                "filter_on_missing": ["sscat_id"]
+                              },
+                              "rv_sscat_filter": {},
+                              "rv_category_click_recency_ranker": {
+                                "min_products_per_category": 1,
+                                "click_threshold": 5
+                              },
+                              "rv_feed_adapter": {
+                                "feed_limit": 500
+                              }
+                            }
+                          }
+                        },
+                        "generate_widget_on_the_fly": {
+                          "config": {
+                            "enabled": true,
+                            "name": "rv_interactions_widget_v1",
+                            "is_not_user_level": false,
+                            "result_component": "catalog_validator",
+                            "dag_config": {
+                              "rv_substitute_online_cg_connector": ["feature_enricher"],
+                              "feature_enricher": [
+                                "rv_categories_eligibility_checker:1:on_success",
+                                "rv_categories_eligibility_checker:2:on_failure"
+                              ],
+                              "rv_categories_eligibility_checker:1:on_success": ["rv_category_click_recency_ranker"],
+                              "rv_categories_eligibility_checker:2:on_failure": ["rv_recency_ranker"],
+                              "rv_category_click_recency_ranker": ["rv_categories_adapter"],
+                              "rv_categories_adapter": ["catalog_validator"],
+                              "rv_recency_ranker": ["catalog_validator"]
+                            },
+                            "component_config": {
+                              "rv_substitute_online_cg_connector": {
+                                "algo_name": "rv_interactions",
+                                "algo_variant_id": "rv_widget_rvcg",
+                                "online_cg_host_id": "exploit",
+                                "limit": 2000
+                              },
+                              "feature_enricher": {
+                                "orion_version": 1,
+                                "entity_label": "catalog",
+                                "key_schema": "catalog_id",
+                                "feature_group": "realtime_int64",
+                                "feature_labels": ["sscat_id"],
+                                "filter_on_missing": ["sscat_id"]
+                              },
+                              "rv_categories_eligibility_checker:1": {
+                                "toggle_category_threshold": 3
+                              },
+                              "rv_categories_eligibility_checker:2": {
+                                "toggle_category_threshold": 3
+                              },
+                              "rv_category_click_recency_ranker": {
+                                "min_products_per_category": 1,
+                                "click_threshold": 3
+                              },
+                              "rv_categories_adapter": {
+                                "homepage_category_limit": 48,
+                                "products_per_homepage_category": 3
+                              },
+                              "rv_recency_ranker": {
+                                "limit_for_recently_viewed_products": 11
+                              }
+                            }
+                          }
+                        }
+                      }
+                      '
+                      logging-percent: 1
+                    user-ids: "" 
+                  scaleup: 
+                    current-scaleup:
+                      config-bundle: '{
+                        "generate_feed_on_the_fly": {
+                          "config": {
+                            "enabled": true,
+                            "name": "rv_interactions_feed_v1_scaleup",
+                            "is_not_user_level": false,
+                            "result_component": "catalog_validator",
+                            "dag_config": {
+                              "rv_substitute_online_cg_connector": ["feature_enricher"],
+                              "feature_enricher": ["rv_sscat_filter"],
+                              "rv_sscat_filter": ["rv_category_click_recency_ranker"],
+                              "rv_category_click_recency_ranker": ["rv_feed_adapter"],
+                              "rv_feed_adapter": ["catalog_validator"]
+                            },
+                            "component_config": {
+                              "rv_substitute_online_cg_connector": {
+                                "algo_name": "rv_interactions",
+                                "algo_variant_id": "rv_widget_rvcg",
+                                "online_cg_host_id": "exploit",
+                                "limit": 2000
+                              },
+                              "feature_enricher": {
+                                "orion_version": 1,
+                                "entity_label": "catalog",
+                                "key_schema": "catalog_id",
+                                "feature_group": "realtime_int64",
+                                "feature_labels": ["sscat_id"],
+                                "filter_on_missing": ["sscat_id"]
+                              },
+                              "rv_sscat_filter": {},
+                              "rv_category_click_recency_ranker": {
+                                "min_products_per_category": 1,
+                                "click_threshold": 5
+                              },
+                              "rv_feed_adapter": {
+                                "feed_limit": 500
+                              }
+                            }
+                          }
+                        },
+                        "generate_widget_on_the_fly": {
+                          "config": {
+                            "enabled": true,
+                            "name": "rv_interactions_widget_v1_scaleup",
+                            "is_not_user_level": false,
+                            "result_component": "catalog_validator",
+                            "dag_config": {
+                              "rv_substitute_online_cg_connector": ["feature_enricher"],
+                              "feature_enricher": [
+                                "rv_categories_eligibility_checker:1:on_success",
+                                "rv_categories_eligibility_checker:2:on_failure"
+                              ],
+                              "rv_categories_eligibility_checker:1:on_success": ["rv_category_click_recency_ranker"],
+                              "rv_categories_eligibility_checker:2:on_failure": ["rv_recency_ranker"],
+                              "rv_category_click_recency_ranker": ["rv_categories_adapter"],
+                              "rv_categories_adapter": ["catalog_validator"],
+                              "rv_recency_ranker": ["catalog_validator"]
+                            },
+                            "component_config": {
+                              "rv_substitute_online_cg_connector": {
+                                "algo_name": "rv_interactions",
+                                "algo_variant_id": "rv_widget_rvcg",
+                                "online_cg_host_id": "exploit",
+                                "limit": 2000
+                              },
+                              "feature_enricher": {
+                                "orion_version": 1,
+                                "entity_label": "catalog",
+                                "key_schema": "catalog_id",
+                                "feature_group": "realtime_int64",
+                                "feature_labels": ["sscat_id"],
+                                "filter_on_missing": ["sscat_id"]
+                              },
+                              "rv_categories_eligibility_checker:1": {
+                                "toggle_category_threshold": 3
+                              },
+                              "rv_categories_eligibility_checker:2": {
+                                "toggle_category_threshold": 3
+                              },
+                              "rv_category_click_recency_ranker": {
+                                "min_products_per_category": 1,
+                                "click_threshold": 3
+                              },
+                              "rv_categories_adapter": {
+                                "homepage_category_limit": 48,
+                                "products_per_homepage_category": 3
+                              },
+                              "rv_recency_ranker": {
+                                "limit_for_recently_viewed_products": 11
+                              }
+                            }
+                          }
+                        }
+                      }
+                      '
+                      logging-percent: 1
+                      scaleup-percent: 100
+          rv-interactions-v2:
+            exploit:
+              logged-in:
+                variant-config:
+                  override:  
+                    override-config:
+                      config-bundle: '{
+                        "generate_feed_on_the_fly": {
+                          "config": {
+                            "enabled": true,
+                            "name": "rv_interactions_feed_v2",
+                            "is_not_user_level": false,
+                            "result_component": "catalog_validator",
+                            "dag_config": {
+                              "rv_substitute_online_cg_connector": ["feature_enricher"],
+                              "feature_enricher": ["rv_sscat_filter"],
+                              "rv_sscat_filter": ["rv_category_click_recency_ranker"],
+                              "rv_category_click_recency_ranker": ["rv_feed_adapter"],
+                              "rv_feed_adapter": ["catalog_validator"]
+                            },
+                            "component_config": {
+                              "rv_substitute_online_cg_connector": {
+                                "algo_name": "rv_interactions",
+                                "algo_variant_id": "rv_widget_rvcg",
+                                "online_cg_host_id": "exploit",
+                                "limit": 2000
+                              },
+                              "feature_enricher": {
+                                "orion_version": 1,
+                                "entity_label": "catalog",
+                                "key_schema": "catalog_id",
+                                "feature_group": "realtime_int64",
+                                "feature_labels": ["sscat_id"],
+                                "filter_on_missing": ["sscat_id"]
+                              },
+                              "rv_sscat_filter": {},
+                              "rv_category_click_recency_ranker": {
+                                "min_products_per_category": 1,
+                                "click_threshold": 5
+                              },
+                              "rv_feed_adapter": {
+                                "feed_limit": 500
+                              }
+                            }
+                          }
+                        },
+                        "generate_widget_on_the_fly": {
+                          "config": {
+                            "enabled": true,
+                            "name": "rv_interactions_widget_v2",
+                            "is_not_user_level": false,
+                            "result_component": "catalog_validator",
+                            "dag_config": {
+                              "rv_substitute_online_cg_connector": ["feature_enricher"],
+                              "feature_enricher": [
+                                "rv_categories_eligibility_checker:1:on_success",
+                                "rv_categories_eligibility_checker:2:on_failure"
+                              ],
+                              "rv_categories_eligibility_checker:1:on_success": ["rv_category_click_recency_ranker"],
+                              "rv_categories_eligibility_checker:2:on_failure": ["rv_recency_ranker"],
+                              "rv_category_click_recency_ranker": ["rv_categories_adapter"],
+                              "rv_categories_adapter": ["catalog_validator"],
+                              "rv_recency_ranker": ["catalog_validator"]
+                            },
+                            "component_config": {
+                              "rv_substitute_online_cg_connector": {
+                                "algo_name": "rv_interactions",
+                                "algo_variant_id": "rv_widget_rvcg",
+                                "online_cg_host_id": "exploit",
+                                "limit": 2000
+                              },
+                              "feature_enricher": {
+                                "orion_version": 1,
+                                "entity_label": "catalog",
+                                "key_schema": "catalog_id",
+                                "feature_group": "realtime_int64",
+                                "feature_labels": ["sscat_id"],
+                                "filter_on_missing": ["sscat_id"]
+                              },
+                              "rv_categories_eligibility_checker:1": {
+                                "toggle_category_threshold": 3
+                              },
+                              "rv_categories_eligibility_checker:2": {
+                                "toggle_category_threshold": 3
+                              },
+                              "rv_category_click_recency_ranker": {
+                                "min_products_per_category": 1,
+                                "click_threshold": 3
+                              },
+                              "rv_categories_adapter": {
+                                "homepage_category_limit": 48,
+                                "products_per_homepage_category": 1
+                              },
+                              "rv_recency_ranker": {
+                                "limit_for_recently_viewed_products": 11
+                              }
+                            }
+                          }
+                        }
+                      }
+                      '
+                      logging-percent: 1
+                    user-ids: "" 
+                  scaleup: 
+                    current-scaleup:
+                      config-bundle: '{
+                        "generate_feed_on_the_fly": {
+                          "config": {
+                            "enabled": true,
+                            "name": "rv_interactions_feed_v2_scaleup",
+                            "is_not_user_level": false,
+                            "result_component": "catalog_validator",
+                            "dag_config": {
+                              "rv_substitute_online_cg_connector": ["feature_enricher"],
+                              "feature_enricher": ["rv_sscat_filter"],
+                              "rv_sscat_filter": ["rv_category_click_recency_ranker"],
+                              "rv_category_click_recency_ranker": ["rv_feed_adapter"],
+                              "rv_feed_adapter": ["catalog_validator"]
+                            },
+                            "component_config": {
+                              "rv_substitute_online_cg_connector": {
+                                "algo_name": "rv_interactions",
+                                "algo_variant_id": "rv_widget_rvcg",
+                                "online_cg_host_id": "exploit",
+                                "limit": 2000
+                              },
+                              "feature_enricher": {
+                                "orion_version": 1,
+                                "entity_label": "catalog",
+                                "key_schema": "catalog_id",
+                                "feature_group": "realtime_int64",
+                                "feature_labels": ["sscat_id"],
+                                "filter_on_missing": ["sscat_id"]
+                              },
+                              "rv_sscat_filter": {},
+                              "rv_category_click_recency_ranker": {
+                                "min_products_per_category": 1,
+                                "click_threshold": 5
+                              },
+                              "rv_feed_adapter": {
+                                "feed_limit": 500
+                              }
+                            }
+                          }
+                        },
+                        "generate_widget_on_the_fly": {
+                          "config": {
+                            "enabled": true,
+                            "name": "rv_interactions_widget_v2_scaleup",
+                            "is_not_user_level": false,
+                            "result_component": "catalog_validator",
+                            "dag_config": {
+                              "rv_substitute_online_cg_connector": ["feature_enricher"],
+                              "feature_enricher": [
+                                "rv_categories_eligibility_checker:1:on_success",
+                                "rv_categories_eligibility_checker:2:on_failure"
+                              ],
+                              "rv_categories_eligibility_checker:1:on_success": ["rv_category_click_recency_ranker"],
+                              "rv_categories_eligibility_checker:2:on_failure": ["rv_recency_ranker"],
+                              "rv_category_click_recency_ranker": ["rv_categories_adapter"],
+                              "rv_categories_adapter": ["catalog_validator"],
+                              "rv_recency_ranker": ["catalog_validator"]
+                            },
+                            "component_config": {
+                              "rv_substitute_online_cg_connector": {
+                                "algo_name": "rv_interactions",
+                                "algo_variant_id": "rv_widget_rvcg",
+                                "online_cg_host_id": "exploit",
+                                "limit": 2000
+                              },
+                              "feature_enricher": {
+                                "orion_version": 1,
+                                "entity_label": "catalog",
+                                "key_schema": "catalog_id",
+                                "feature_group": "realtime_int64",
+                                "feature_labels": ["sscat_id"],
+                                "filter_on_missing": ["sscat_id"]
+                              },
+                              "rv_categories_eligibility_checker:1": {
+                                "toggle_category_threshold": 3
+                              },
+                              "rv_categories_eligibility_checker:2": {
+                                "toggle_category_threshold": 3
+                              },
+                              "rv_category_click_recency_ranker": {
+                                "min_products_per_category": 1,
+                                "click_threshold": 3
+                              },
+                              "rv_categories_adapter": {
+                                "homepage_category_limit": 48,
+                                "products_per_homepage_category": 1
+                              },
+                              "rv_recency_ranker": {
+                                "limit_for_recently_viewed_products": 11
+                              }
+                            }
+                          }
+                        }
+                      }
+                      '
+                      logging-percent: 1
+                      scaleup-percent: 100
+          rv_interactions_intent:
+            exploit:
+              logged-in:
+                variant-config:
+                  override:  
+                    override-config:
+                      config-bundle: '{
+                        "generate_feed_on_the_fly": {
+                          "config": {
+                            "enabled": true,
+                            "name": "rv_interactions_feed_intent",
+                            "is_not_user_level": false,
+                            "result_component": "catalog_validator",
+                            "dag_config": {
+                              "rv_substitute_online_cg_connector": ["feature_enricher"],
+                              "feature_enricher": ["rv_sscat_filter"],
+                              "rv_sscat_filter": ["rv_category_click_recency_ranker"],
+                              "rv_category_click_recency_ranker": ["rv_feed_adapter"],
+                              "rv_feed_adapter": ["catalog_validator"]
+                            },
+                            "component_config": {
+                              "rv_substitute_online_cg_connector": {
+                                "algo_name": "rv_interactions",
+                                "algo_variant_id": "rv_widget_rvcg",
+                                "online_cg_host_id": "exploit",
+                                "limit": 2000
+                              },
+                              "feature_enricher": {
+                                "orion_version": 1,
+                                "entity_label": "catalog",
+                                "key_schema": "catalog_id",
+                                "feature_group": "realtime_int64",
+                                "feature_labels": ["sscat_id"],
+                                "filter_on_missing": ["sscat_id"]
+                              },
+                              "rv_sscat_filter": {},
+                              "rv_category_click_recency_ranker": {
+                                "min_products_per_category": 1,
+                                "click_threshold": 5
+                              },
+                              "rv_feed_adapter": {
+                                "feed_limit": 500
+                              }
+                            }
+                          }
+                        },
+                        "generate_widget_on_the_fly": {
+                          "config": {
+                            "enabled": true,
+                            "name": "rv_interactions_widget_intent",
+                            "is_not_user_level": false,
+                            "result_component": "catalog_validator",
+                            "dag_config": {
+                              "rv_substitute_online_cg_connector": ["feature_enricher"],
+                              "feature_enricher": [
+                                "rv_categories_eligibility_checker:1:on_success",
+                                "rv_categories_eligibility_checker:2:on_failure"
+                              ],
+                              "rv_categories_eligibility_checker:1:on_success": ["rv_category_click_recency_ranker"],
+                              "rv_categories_eligibility_checker:2:on_failure": ["rv_recency_ranker"],
+                              "rv_category_click_recency_ranker": ["rv_categories_adapter"],
+                              "rv_categories_adapter": ["catalog_validator"],
+                              "rv_recency_ranker": ["catalog_validator"]
+                            },
+                            "component_config": {
+                              "rv_substitute_online_cg_connector": {
+                                "algo_name": "rv_interactions",
+                                "algo_variant_id": "rv_widget_rvcg",
+                                "online_cg_host_id": "exploit",
+                                "limit": 2000
+                              },
+                              "feature_enricher": {
+                                "orion_version": 1,
+                                "entity_label": "catalog",
+                                "key_schema": "catalog_id",
+                                "feature_group": "realtime_int64",
+                                "feature_labels": ["sscat_id"],
+                                "filter_on_missing": ["sscat_id"]
+                              },
+                              "rv_categories_eligibility_checker:1": {
+                                "toggle_category_threshold": 3
+                              },
+                              "rv_categories_eligibility_checker:2": {
+                                "toggle_category_threshold": 3
+                              },
+                              "rv_category_click_recency_ranker": {
+                                "min_products_per_category": 1,
+                                "click_threshold": 3
+                              },
+                              "rv_categories_adapter": {
+                                "homepage_category_limit": 48,
+                                "products_per_homepage_category": 3
+                              },
+                              "rv_recency_ranker": {
+                                "limit_for_recently_viewed_products": 11
+                              }
+                            }
+                          }
+                        }
+                      }
+                      '
+                      logging-percent: 1
+                    user-ids: "" 
+                  scaleup: 
+                    current-scaleup:
+                      config-bundle: '{
+                        "generate_feed_on_the_fly": {
+                          "config": {
+                            "enabled": true,
+                            "name": "rv_interactions_feed_intent_scaleup",
+                            "is_not_user_level": false,
+                            "result_component": "catalog_validator",
+                            "dag_config": {
+                              "rv_substitute_online_cg_connector": ["feature_enricher"],
+                              "feature_enricher": ["rv_sscat_filter"],
+                              "rv_sscat_filter": ["rv_category_click_recency_ranker"],
+                              "rv_category_click_recency_ranker": ["rv_feed_adapter"],
+                              "rv_feed_adapter": ["catalog_validator"]
+                            },
+                            "component_config": {
+                              "rv_substitute_online_cg_connector": {
+                                "algo_name": "rv_interactions",
+                                "algo_variant_id": "rv_widget_rvcg",
+                                "online_cg_host_id": "exploit",
+                                "limit": 2000
+                              },
+                              "feature_enricher": {
+                                "orion_version": 1,
+                                "entity_label": "catalog",
+                                "key_schema": "catalog_id",
+                                "feature_group": "realtime_int64",
+                                "feature_labels": ["sscat_id"],
+                                "filter_on_missing": ["sscat_id"]
+                              },
+                              "rv_sscat_filter": {},
+                              "rv_category_click_recency_ranker": {
+                                "min_products_per_category": 1,
+                                "click_threshold": 5
+                              },
+                              "rv_feed_adapter": {
+                                "feed_limit": 500
+                              }
+                            }
+                          }
+                        },
+                        "generate_widget_on_the_fly": {
+                          "config": {
+                            "enabled": true,
+                            "name": "rv_interactions_widget_intent_scaleup",
+                            "is_not_user_level": false,
+                            "result_component": "catalog_validator",
+                            "dag_config": {
+                              "rv_substitute_online_cg_connector": ["feature_enricher"],
+                              "feature_enricher": [
+                                "rv_categories_eligibility_checker:1:on_success",
+                                "rv_categories_eligibility_checker:2:on_failure"
+                              ],
+                              "rv_categories_eligibility_checker:1:on_success": ["rv_category_click_recency_ranker"],
+                              "rv_categories_eligibility_checker:2:on_failure": ["rv_recency_ranker"],
+                              "rv_category_click_recency_ranker": ["rv_categories_adapter"],
+                              "rv_categories_adapter": ["catalog_validator"],
+                              "rv_recency_ranker": ["catalog_validator"]
+                            },
+                            "component_config": {
+                              "rv_substitute_online_cg_connector": {
+                                "algo_name": "rv_interactions",
+                                "algo_variant_id": "rv_widget_rvcg",
+                                "online_cg_host_id": "exploit",
+                                "limit": 2000
+                              },
+                              "feature_enricher": {
+                                "orion_version": 1,
+                                "entity_label": "catalog",
+                                "key_schema": "catalog_id",
+                                "feature_group": "realtime_int64",
+                                "feature_labels": ["sscat_id"],
+                                "filter_on_missing": ["sscat_id"]
+                              },
+                              "rv_categories_eligibility_checker:1": {
+                                "toggle_category_threshold": 3
+                              },
+                              "rv_categories_eligibility_checker:2": {
+                                "toggle_category_threshold": 3
+                              },
+                              "rv_category_click_recency_ranker": {
+                                "min_products_per_category": 1,
+                                "click_threshold": 3
+                              },
+                              "rv_categories_adapter": {
+                                "homepage_category_limit": 48,
+                                "products_per_homepage_category": 3
+                              },
+                              "rv_recency_ranker": {
+                                "limit_for_recently_viewed_products": 11
+                              }
+                            }
+                          }
+                        }
+                      }
+                      '
+                      logging-percent: 1
+                      scaleup-percent: 100
+          default:
+            exploit:
+              logged-in:
+                variant-config:
+                  override:  
+                    override-config:
+                      config-bundle: '{
+                        "generate_feed_on_the_fly": {
+                          "config": {
+                            "enabled": true,
+                            "name": "rv_interactions_feed",
+                            "is_not_user_level": false,
+                            "result_component": "catalog_validator",
+                            "dag_config": {
+                              "rv_substitute_online_cg_connector": ["feature_enricher"],
+                              "feature_enricher": ["rv_sscat_filter"],
+                              "rv_sscat_filter": ["rv_category_click_recency_ranker"],
+                              "rv_category_click_recency_ranker": ["rv_feed_adapter"],
+                              "rv_feed_adapter": ["catalog_validator"]
+                            },
+                            "component_config": {
+                              "rv_substitute_online_cg_connector": {
+                                "algo_name": "rv_interactions",
+                                "algo_variant_id": "rv_widget_rvcg",
+                                "online_cg_host_id": "exploit",
+                                "limit": 2000
+                              },
+                              "feature_enricher": {
+                                "orion_version": 1,
+                                "entity_label": "catalog",
+                                "key_schema": "catalog_id",
+                                "feature_group": "realtime_int64",
+                                "feature_labels": ["sscat_id"],
+                                "filter_on_missing": ["sscat_id"]
+                              },
+                              "rv_sscat_filter": {},
+                              "rv_category_click_recency_ranker": {
+                                "min_products_per_category": 1,
+                                "click_threshold": 5
+                              },
+                              "rv_feed_adapter": {
+                                "feed_limit": 500
+                              }
+                            }
+                          }
+                        },
+                        "generate_widget_on_the_fly": {
+                          "config": {
+                            "enabled": true,
+                            "name": "rv_interactions_widget",
+                            "is_not_user_level": false,
+                            "result_component": "catalog_validator",
+                            "dag_config": {
+                              "rv_substitute_online_cg_connector": ["feature_enricher"],
+                              "feature_enricher": [
+                                "rv_categories_eligibility_checker:1:on_success",
+                                "rv_categories_eligibility_checker:2:on_failure"
+                              ],
+                              "rv_categories_eligibility_checker:1:on_success": ["rv_category_click_recency_ranker"],
+                              "rv_categories_eligibility_checker:2:on_failure": ["rv_recency_ranker"],
+                              "rv_category_click_recency_ranker": ["rv_categories_adapter"],
+                              "rv_categories_adapter": ["catalog_validator"],
+                              "rv_recency_ranker": ["catalog_validator"]
+                            },
+                            "component_config": {
+                              "rv_substitute_online_cg_connector": {
+                                "algo_name": "rv_interactions",
+                                "algo_variant_id": "rv_widget_rvcg",
+                                "online_cg_host_id": "exploit",
+                                "limit": 2000
+                              },
+                              "feature_enricher": {
+                                "orion_version": 1,
+                                "entity_label": "catalog",
+                                "key_schema": "catalog_id",
+                                "feature_group": "realtime_int64",
+                                "feature_labels": ["sscat_id"],
+                                "filter_on_missing": ["sscat_id"]
+                              },
+                              "rv_categories_eligibility_checker:1": {
+                                "toggle_category_threshold": 3
+                              },
+                              "rv_categories_eligibility_checker:2": {
+                                "toggle_category_threshold": 3
+                              },
+                              "rv_category_click_recency_ranker": {
+                                "min_products_per_category": 1,
+                                "click_threshold": 3
+                              },
+                              "rv_categories_adapter": {
+                                "homepage_category_limit": 48,
+                                "products_per_homepage_category": 3
+                              },
+                              "rv_recency_ranker": {
+                                "limit_for_recently_viewed_products": 11
+                              }
+                            }
+                          }
+                        }
+                      }
+                      '
+                      logging-percent: 1
+                    user-ids: "" 
+                  scaleup: 
+                    current-scaleup:
+                      config-bundle: '{
+                        "generate_feed_on_the_fly": {
+                          "config": {
+                            "enabled": true,
+                            "name": "rv_interactions_feed_scaleup",
+                            "is_not_user_level": false,
+                            "result_component": "catalog_validator",
+                            "dag_config": {
+                              "rv_substitute_online_cg_connector": ["feature_enricher"],
+                              "feature_enricher": ["rv_sscat_filter"],
+                              "rv_sscat_filter": ["rv_category_click_recency_ranker"],
+                              "rv_category_click_recency_ranker": ["rv_feed_adapter"],
+                              "rv_feed_adapter": ["catalog_validator"]
+                            },
+                            "component_config": {
+                              "rv_substitute_online_cg_connector": {
+                                "algo_name": "rv_interactions",
+                                "algo_variant_id": "rv_widget_rvcg",
+                                "online_cg_host_id": "exploit",
+                                "limit": 2000
+                              },
+                              "feature_enricher": {
+                                "orion_version": 1,
+                                "entity_label": "catalog",
+                                "key_schema": "catalog_id",
+                                "feature_group": "realtime_int64",
+                                "feature_labels": ["sscat_id"],
+                                "filter_on_missing": ["sscat_id"]
+                              },
+                              "rv_sscat_filter": {},
+                              "rv_category_click_recency_ranker": {
+                                "min_products_per_category": 1,
+                                "click_threshold": 5
+                              },
+                              "rv_feed_adapter": {
+                                "feed_limit": 500
+                              }
+                            }
+                          }
+                        },
+                        "generate_widget_on_the_fly": {
+                          "config": {
+                            "enabled": true,
+                            "name": "rv_interactions_widget_scaleup",
+                            "is_not_user_level": false,
+                            "result_component": "catalog_validator",
+                            "dag_config": {
+                              "rv_substitute_online_cg_connector": ["feature_enricher"],
+                              "feature_enricher": [
+                                "rv_categories_eligibility_checker:1:on_success",
+                                "rv_categories_eligibility_checker:2:on_failure"
+                              ],
+                              "rv_categories_eligibility_checker:1:on_success": ["rv_category_click_recency_ranker"],
+                              "rv_categories_eligibility_checker:2:on_failure": ["rv_recency_ranker"],
+                              "rv_category_click_recency_ranker": ["rv_categories_adapter"],
+                              "rv_categories_adapter": ["catalog_validator"],
+                              "rv_recency_ranker": ["catalog_validator"]
+                            },
+                            "component_config": {
+                              "rv_substitute_online_cg_connector": {
+                                "algo_name": "rv_interactions",
+                                "algo_variant_id": "rv_widget_rvcg",
+                                "online_cg_host_id": "exploit",
+                                "limit": 2000
+                              },
+                              "feature_enricher": {
+                                "orion_version": 1,
+                                "entity_label": "catalog",
+                                "key_schema": "catalog_id",
+                                "feature_group": "realtime_int64",
+                                "feature_labels": ["sscat_id"],
+                                "filter_on_missing": ["sscat_id"]
+                              },
+                              "rv_categories_eligibility_checker:1": {
+                                "toggle_category_threshold": 3
+                              },
+                              "rv_categories_eligibility_checker:2": {
+                                "toggle_category_threshold": 3
+                              },
+                              "rv_category_click_recency_ranker": {
+                                "min_products_per_category": 1,
+                                "click_threshold": 3
+                              },
+                              "rv_categories_adapter": {
+                                "homepage_category_limit": 48,
+                                "products_per_homepage_category": 3
+                              },
+                              "rv_recency_ranker": {
+                                "limit_for_recently_viewed_products": 11
+                              }
+                            }
+                          }
+                        }
+                      }
+                      '
+                      logging-percent: 1
+                      scaleup-percent: 100
+rv-ad:
+  external-service:
+    model-proxy:
+      batch-size: 200
+      host-details:
+        rv-substitute-ad-exp:
+          env-prefix: RV_SUBSTITUTE_EXP_MP
+        rv-substitute-ad-experiment:
+          env-prefix: RV_SUBSTITUTE_EXP_MP
+        rv-substitute-ad-scaleup:
+          env-prefix: RV_SUBSTITUTE_AD_SCALEUP_MP
+      skip-mp-call: false
+rv-exploit:
+  external-service:
+    model-proxy:
+      batch-size: 200
+      host-details:
+        rv-substitute-exploit-experiment:
+          env-prefix: RV_SUBSTITUTE_EXP_MP
+        rv-substitute-exploit-scaleup:
+          env-prefix: RV_SUBSTITUTE_EXPLOIT_SCALEUP_MP
+      skip-mp-call: false
+rv-explore:
+  external-service:
+    model-proxy:
+      batch-size: 200
+      host-details:
+        rv-substitute-exp:
+          env-prefix: RV_SUBSTITUTE_EXP_MP
+        rv-substitute-explore-scaleup:
+          env-prefix: RV_SUBSTITUTE_EXPLORE_SCALEUP_MP
+      skip-mp-call: false

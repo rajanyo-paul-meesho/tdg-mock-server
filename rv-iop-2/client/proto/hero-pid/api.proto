@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+import "hero-pid/request.proto";
+import "hero-pid/response.proto";
+
+option java_multiple_files = true;
+option go_package = "../grpc/hero-pid";
+option java_package = "com.meesho.ml.heropid.client.grpc.services";
+
+
+// HeroPidService defines the gRPC service for hero PID
+service HeroPidService {
+  // GetHeroPid returns a List of CatalogHeroProduct for a given request
+  rpc GetHeroPid(HeroPidRequest) returns (HeroPidResponse) {}
+} 

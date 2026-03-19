@@ -1,0 +1,3 @@
+[submodule "client/proto"]
+	path = client/proto
+	url = https://github.com/Meesho/discovery-proto

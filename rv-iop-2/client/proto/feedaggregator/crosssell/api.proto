@@ -1,0 +1,15 @@
+syntax = "proto3";
+package api;
+
+option go_package = "../crosssell";
+
+option java_multiple_files = true;
+option java_package = "com.meesho.ml.feedaggregator.crosssellclient.grpc.services";
+option java_outer_classname = "CrossSellServiceProto";
+
+import "feedaggregator/crosssell/request.proto";
+import "feedaggregator/crosssell/response.proto";
+
+service CrossSellHandler {
+  rpc FetchCrossSellFeed(request.CrossSellRequest) returns (response.CrossSellResponse);
+}

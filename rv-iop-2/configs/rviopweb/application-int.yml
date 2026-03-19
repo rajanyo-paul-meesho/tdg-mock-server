@@ -1,0 +1,379 @@
+app:
+  env: int
+  log-level: INFO
+  log:
+    level: INFO
+  metric-sampling-rate: '0.3'
+  metric:
+    sampling:
+      rate: '0.3'
+  name: rv-iop-web
+  port: '8080'
+catalog:
+  filtering:
+    grpc:
+      channel:
+        pool:
+          size: '50'
+      connect:
+        timeout:
+          in:
+            ms: '50'
+      connection:
+        request:
+          timeout:
+            in:
+              ms: '50'
+      deadline:
+        in:
+          sec: '30'
+      plain:
+        text: 'true'
+      host: 'catalog-visibility-filtering-secondary-web.prd.meesho.int'
+      keep:
+        alive:
+          timeout:
+            in:
+              ms: '50'
+      port: '8080'
+      queue:
+        pool:
+          size: '10'
+      thread:
+        pool:
+          size: '50'
+      timeout:
+        in:
+          ms: '20'
+  validity:
+    redis:
+      addr: redis-16399.internal.c28927.asia-seast1-mz.gcp.cloud.rlrcp.com:16399
+      db: '0'
+      min:
+        idle: '4'
+      ping:
+        flag: false
+        interval:
+          in:
+            sec: '15'
+      pool:
+        size: '10'
+        timeout:
+          in:
+            ms: '50'
+      read:
+        timeout:
+          in:
+            ms: '50'
+      username: default
+      write:
+        timeout:
+          in:
+            ms: '50'
+ct:
+  budget:
+    df:
+      hosts: 10.138.32.61:26379,10.138.32.18:26379,10.138.32.66:26379
+      master: ct-qct-sale
+    filter:
+      dragonfly:
+        master:
+          name: ct-qct-sale
+        read:
+          from:
+            replica: true
+          timeout:
+            in:
+              ms: '30'
+        sentinel:
+          nodes: 10.138.32.61:26379,10.138.32.18:26379,10.138.32.66:26379
+        write:
+          timeout:
+            in:
+              ms: '20'
+dynamic-config:
+  optional: true
+  source: zookeeper
+  version: 1
+external-service:
+  ab:
+    auth: ${AB_AUTH}
+    host: ab.prd.mrouter.int
+    port: '8080'
+    read-timeout-in-ms: '50'
+    dial-timeout-in-ms: '150'
+    max-idle-conns: '100'
+    max-idle-conns-per-host: '10'
+    idle-conn-timeout-in-ms: '150'
+fs:
+  v4:
+    grpc:
+      plain:
+        text: true
+    host: online-feature-store-read-v4-secondary.prd.meesho.int
+    port: '8080'
+    timeout:
+      in:
+        ms: '110'
+in:
+  memory:
+    cache:
+      size:
+        in:
+          bytes: '104857600'
+mcache:
+  auth-token: ${MCACHE_AUTH_TOKEN}
+  catalog-validity:
+    mcache-id: 82
+online:
+  cg:
+    c1:
+      dial:
+        timeout:
+          in:
+            ms: '150'
+      host: exploit-online-cg-web.int.meesho.int
+      idle:
+        conn:
+          timeout:
+            in:
+              ms: '150'
+      max:
+        idle:
+          conns: '100'
+          conns_per_host: '10'
+      name: exploit
+      port: '8080'
+      timeout:
+        in:
+          ms: '250'
+    c2:
+      dial:
+        timeout:
+          in:
+            ms: '150'
+      host: explore-online-cg-web.int.meesho.int
+      idle:
+        conn:
+          timeout:
+            in:
+              ms: '140'
+      max:
+        idle:
+          conns: '100'
+          conns_per_host: '30'
+      name: explore
+      port: '8080'
+      timeout:
+        in:
+          ms: '150'
+    c3:
+      dial:
+        timeout:
+          in:
+            ms: '150'
+      host: ad-online-cg-web.int.meesho.int
+      idle:
+        conn:
+          timeout:
+            in:
+              ms: '150'
+      max:
+        idle:
+          conns: '100'
+          conns_per_host: '10'
+      name: ad
+      port: '8080'
+      timeout:
+        in:
+          ms: '150'
+    cluster:
+      count: '3'
+    grpc:
+      c1:
+        grpc:
+          plain:
+            text: true
+        host: exploit-online-cg-grpc-web.int.meesho.int
+        name: exploit
+        port: '8080'
+        timeout:
+          in:
+            ms: '250'
+      c2:
+        grpc:
+          plain:
+            text: true
+        host: explore-online-cg-grpc-web.int.meesho.int
+        name: explore
+        port: '8080'
+        timeout:
+          in:
+            ms: '150'
+      c3:
+        grpc:
+          plain:
+            text: true
+        host: ad-online-cg-grpc-web.int.meesho.int
+        name: ad
+        port: '8080'
+        timeout:
+          in:
+            ms: '150'
+      cluster:
+        count: '3'
+      enabled: true
+prism:
+  service:
+    dial:
+      timeout:
+        in:
+          ms: '150'
+    host: messaging-api-internal.prd.meesho.int
+    idle:
+      conn:
+        timeout:
+          in:
+            ms: '150'
+    max:
+      idle:
+        conns: '100'
+        conns_per_host: '10'
+    port: '8080'
+    timeout:
+      in:
+        ms: '100'
+    username: 9c31aba91dc69ecdhsfhjsdf3b2f5480a1d4d346a
+rv:
+  substitute:
+    ad:
+      feed:
+        redis:
+          addr: redis-11750.internal.c28928.asia-seast1-mz.gcp.cloud.rlrcp.com:11750
+          db: '0'
+          ping:
+            flag: false
+            interval:
+              in:
+                sec: '15'
+          pool:
+            size: '10'
+          read:
+            timeout:
+              in:
+                ms: '70'
+          username: default
+          write:
+            timeout:
+              in:
+                ms: '70'
+      scaleup:
+        mp:
+          grpc:
+            lb:
+              policy: round_robin
+            plain:
+              text: true
+          host: model-proxy-service-rv-ad.prd.meesho.int
+          port: '8080'
+          timeout: '100'
+    exp:
+      mp:
+        grpc:
+          lb:
+            policy: round_robin
+          plain:
+            text: true
+        host: model-proxy-service-experiment.prd.meesho.int
+        port: '8080'
+        timeout: '250'
+    exploit:
+      feed:
+        redis:
+          addr: redis-17830.internal.c28928.asia-seast1-mz.gcp.cloud.rlrcp.com:17830
+          db: '0'
+          ping:
+            flag: false
+            interval:
+              in:
+                sec: '15'
+          pool:
+            size: '10'
+          read:
+            timeout:
+              in:
+                ms: '70'
+          username: redis_rv-iop-cache_user
+          write:
+            timeout:
+              in:
+                ms: '70'
+      scaleup:
+        host: model-proxy-service-rv-organic.prd.meesho.int
+        mp:
+          grpc:
+            lb:
+              policy: round_robin
+            plain:
+              text: true
+          host: model-proxy-service-rv-organic.prd.meesho.int
+          port: '8080'
+          timeout: '130'
+    explore:
+      feed:
+        redis:
+          addr: redis-17830.internal.c28928.asia-seast1-mz.gcp.cloud.rlrcp.com:17830
+          db: '0'
+          ping:
+            flag: false
+            interval:
+              in:
+                sec: '15'
+          pool:
+            size: '10'
+          read:
+            timeout:
+              in:
+                ms: '70'
+          username: redis_rv-iop-cache_user
+          write:
+            timeout:
+              in:
+                ms: '70'
+      scaleup:
+        mp:
+          grpc:
+            lb:
+              policy: round_robin
+            plain:
+              text: true
+          host: model-proxy-service-rv-ct.prd.meesho.int
+          port: '8080'
+          timeout: '120'
+segment:
+  store:
+    grpc:
+      plain:
+        text: true
+    host: segment-store.prd.meesho.int
+    port: '8080'
+    timeout: '50'
+static:
+  slotting:
+    grpc:
+      plain:
+        text: true
+    host: slotting-service.prd.meesho.int
+    port: "8080"
+    timeout:
+      in:
+        ms: "50"
+zookeeper:
+  periodic:
+    update:
+      enabled: true
+      interval: 500s
+  server: zk1.int.meesho.int:2181,zk2.int.meesho.int:2181,zk3.int.meesho.int:2181
+
+---
+deployable-name: rv-iop-web

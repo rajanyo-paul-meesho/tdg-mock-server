@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package clpfeedaggregator.v2;
+
+option go_package = "../v2";
+
+
+import "clp/v2/request.proto";
+import "clp/v2/response.proto";
+
+service ClpFeedHandlerV2 {
+  rpc FetchClpFeedV2 (clpfeedaggregator.v2.CatalogListingPageRequest) returns (clpfeedaggregator.v2.CatalogListingPageResponse) {}
+}

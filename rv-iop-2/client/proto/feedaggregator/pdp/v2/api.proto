@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package pdpfeedaggregator.v2;
+
+option go_package = "../v2";
+
+import "pdp/v2/request.proto";
+import "pdp/v2/response.proto";
+
+service PdpFeedHandlerV2 {
+  rpc FetchPdpFeedV2 (pdpfeedaggregator.RecommendationsRequestV2) returns (pdpfeedaggregator.v2.PdpFeedResponseV2) {}
+}

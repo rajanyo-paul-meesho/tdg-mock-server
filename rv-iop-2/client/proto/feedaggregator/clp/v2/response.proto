@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package clpfeedaggregator.v2;
+
+import "feedcommonresponse/response.proto";
+
+option go_package = "../v2";
+
+message CatalogListingPageResponse {
+  feedcommon.FeedResponse feed_response = 1;
+}

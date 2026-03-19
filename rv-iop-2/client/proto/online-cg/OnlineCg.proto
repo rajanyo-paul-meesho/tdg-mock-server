@@ -1,0 +1,143 @@
+syntax = "proto3";
+
+import "online-cg/qul.proto";
+
+option go_package = "../grpc";
+option java_package = "com.meesho.ml.onlinecg.client.grpc.services";
+
+// Request Messages
+message CandidateGenerationRequest {
+  string tenant_context = 1;
+  string algo_name = 2;
+  string variant = 3;
+  string online_cg_host_id = 5;
+  string entity_type = 6;
+  AlgoFilters filters = 7;
+  uint32 limit = 8;
+
+  oneof real_estate_data {
+    FYData fy_data = 9;
+    CLPData clp_data = 10;
+    CollectionData collection_data = 11;
+    CatalogRecommendationData catalog_recommendation_data = 12;
+    ReelsData reels_data = 13;
+    RVCatalogRecommendationData rv_catalog_reco_data = 14;
+    WidgetFeedData  widget_feed_data = 15;
+    CrossSellData cross_sell_data = 19;
+    TextSearchData text_search_data = 20;
+  }
+
+  string feed_context = 16;
+  string feed_Type = 17;
+  bool pcid_filter_enabled = 18;
+}
+message  RVCatalogRecommendationData{
+  int32 ss_cat_id =1;
+}
+message  WidgetFeedData{
+  ScreenData screen_data = 1;
+}
+message ScreenData{
+  CatalogRecommendationData catalog_recommendation_data=1;
+}
+// Real Estate Data for different algorithms
+message FYData {}
+
+message CLPData {
+  int32 clp_id = 1;
+  bool default_sort = 2;
+  string sort_by = 3;
+  string sort_order = 4;
+  string catalog_ranking_exp = 5;
+  bool is_product_required = 6;
+  string feed_gst_type = 7;
+  repeated FilterGroup feed_filters = 8;
+  repeated FilterGroup applied_filters = 9;
+  repeated FilterGroup applied_filters_definition = 10;
+  map<string, string> feed_generation_contexts = 11;
+}
+
+message CrossSellData {
+  int32 parent_catalog_id = 1;
+  int32 comp_sscat_id = 2;
+}
+
+message CollectionData {
+  int32 collection_id = 1;
+}
+
+message CatalogRecommendationData {
+  int32 catalog_id = 1;
+  int32 ss_cat_id = 2;
+  int32 product_id =3;
+  double relevance_threshold = 4;
+  string filter_type = 5;
+  int32 user_affluent_cohort = 6;
+}
+
+message ReelsData {}
+
+message RvSubstituteData {
+  int32 ss_cat_id = 1;
+}
+
+message TextSearchData {
+  string query = 1;
+  string cursor = 2;
+  onlinecg.QULResponse qul_response = 3;
+  string sort_by = 4;
+  string sort_order = 5;
+  repeated FilterGroup applied_filters = 6;
+  int32 limit = 7;
+  Meta meta = 8;
+}
+
+message Meta {
+  map<string, string> cg_request_meta = 1;
+}
+
+// Filters
+message AlgoFilters {
+  PostAlgoFilters post_algo_filters = 1;
+  InAlgoFilters in_algo_filters = 2;
+}
+
+message PostAlgoFilters {
+  bool DisableSeenFilter = 1;
+  bool DisableVisuallySimilarFilter = 2;
+  bool DisableCGFilter = 3;
+}
+message InAlgoFilters{
+  map<string, FilterGroup> in_algo_filters = 1;
+}
+message FilterUnit {
+  string field = 1;
+  string op = 2;
+  repeated string Value = 3;
+}
+
+
+message FilterGroup {
+  repeated FilterUnit filters = 1;
+}
+
+
+// Response Messages
+message CgResponse {
+  AlgoResponse response = 1;
+}
+
+message AlgoResponse {
+  repeated CandidateUnit candidates = 1;
+  repeated string meta_data_keys = 2;
+}
+
+message CandidateUnit {
+  string id = 1;
+  map<string, string> meta_data = 2;
+}
+
+// Service Definition
+service CandidateService {
+  rpc GetCandidates(CandidateGenerationRequest) returns (CgResponse);
+}

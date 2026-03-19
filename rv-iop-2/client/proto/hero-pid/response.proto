@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option go_package = "../grpc/hero-pid";
+option java_package = "com.meesho.ml.heropid.client.grpc.dtos";
+
+message CatalogHeroProduct {
+  int32 catalogId = 1;
+  int32 productId = 2;
+}
+
+message HeroPidResponse {
+  repeated CatalogHeroProduct data = 1;
+}

@@ -1,0 +1,31 @@
+syntax = "proto3";
+package request;
+
+option java_package = "com.meesho.ml.feedaggregator.fyclient.grpc.dtos";
+option go_package = "../grpc";
+
+message ForYouFeedRequest {
+  string cursor = 1;
+  int32 offset = 2;
+  int32 limit = 3;
+  string feed_context = 4;
+  Filter filter = 5;
+  int64 collection_id = 6;
+  string origin = 7;
+  bool refresh = 8;
+}
+
+message Filter {
+  repeated string selected_filters = 1;
+  string type = 2;
+  SortOption sort_option = 3;
+  string session_state = 4;
+}
+
+message SortOption {
+  string sort_by = 1;
+  string display_name = 2;
+  string sort_order = 3;
+  bool selected = 4;
+  bool default = 5;
+}

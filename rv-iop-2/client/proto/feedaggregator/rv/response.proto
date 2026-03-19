@@ -1,0 +1,79 @@
+syntax = "proto3";
+import "google/protobuf/struct.proto";
+
+package rvfeedaggregator;
+
+option java_multiple_files = true;
+option java_package = "com.meesho.ml.feedaggregator.rvclient.grpc.dtos";
+option go_package = "../grpc/rv";
+
+
+message RecentlyViewedResponse {
+  string error = 1;
+  repeated CatalogDTO catalogs = 2;
+  UserData user_data = 3;
+  string cursor = 4;
+  Metadata metadata = 5;
+  int32 view_template_id = 6;
+}
+
+message CatalogDTO {
+  int32 id = 1 [json_name = "id"];
+  CatalogAd catalog_ad = 2 [json_name = "catalog_ad"];
+  int64 hero_pid = 3 [json_name = "hero_pid"];
+  repeated ReplaceableCatalog replaceable_catalogs = 4 [json_name = "replaceable_catalogs"];
+  string source = 5 [json_name = "source"];
+  Tracker tracker = 6 [json_name = "tracker"];
+  string catalog_match_type = 7 [json_name = "catalog_match_type"];
+  Event event = 8 [json_name = "event"];
+}
+
+message ReplaceableCatalog {
+  int32 catalog_id = 1 [json_name = "catalog_id"];
+  int32 product_id = 2 [json_name = "product_id"];
+  Tracker tracker = 3 [json_name = "tracker"];
+  string catalog_match_type = 4 [json_name = "catalog_match_type"];
+  double o_by_v_delta = 5 [json_name = "o_by_v_delta"];
+  double weight = 6 [json_name = "weight"];
+  string strategy = 7 [json_name = "strategy"];
+  Event event = 8 [json_name = "event"];
+  string ads_metadata = 9 [json_name = "ads_metadata"];
+}
+
+message CatalogAd {
+  bool enabled = 1 [json_name = "enabled"];
+  string metadata = 2 [json_name = "metadata"];
+  int32 campaign_id = 3 [json_name = "campaign_id"];
+}
+
+message Event {
+  int32 catalog_id = 1 [json_name = "catalog_id"];
+  string unique_id = 2 [json_name = "unique_id"];
+  google.protobuf.Struct meta = 3 [json_name = "meta"];
+  int32 slot_position = 4 [json_name = "slot_position"];
+  string catalog_serve_status = 5 [json_name = "catalog_serve_status"];
+  string product_serve_status = 6 [json_name = "product_serve_status"];
+  int32 product_id = 7 [json_name = "product_id"];
+  bool is_product_event = 8 [json_name = "is_product_event"];
+}
+
+message Metadata {
+  int32 start_pos = 1 [json_name = "start_pos"];
+  int32 end_pos = 2 [json_name = "end_pos"];
+  int64 location_id = 3 [json_name = "location_id"];
+  int32 count = 4 [json_name = "count"];
+  bool is_subscribed = 5 [json_name = "is_subscribed"];
+  bool show_widgets = 6 [json_name = "show_widgets"];
+  bool competitive_marketplace_enabled = 7 [json_name = "competitive_marketplace_enabled"];
+  google.protobuf.Struct feed_attributes = 8 [json_name = "feed_attributes"];
+}
+
+message Tracker {
+  string tracker_id = 1 [json_name = "tracker_id"];
+  bool is_product_result = 2 [json_name = "is_product_result"];
+}
+
+message UserData {
+  repeated int32 visible_audience_ids = 1 [json_name = "visible_audience_ids"];
+  repeated int32 not_visible_audience_id = 2 [json_name = "not_visible_audience_id"];
+}

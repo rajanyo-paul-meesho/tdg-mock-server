@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package pdpfeedaggregator;
+import "google/protobuf/struct.proto";
+
+option java_multiple_files = true;
+option java_package = "com.meesho.ml.feedaggregator.pdpclient.grpc.dtos";
+option go_package = "../pdp";
+
+message RequestMetadata {
+  int32 widget_position = 1;
+  string source = 2;
+  string session_id = 3;
+  google.protobuf.Struct widget_group_metadata = 4;
+  string theme = 5;
+}
+
+message RecommendationsRequest {
+  string cursor = 1;
+  int32 offset = 2;
+  int32 limit = 3;
+  string feed_type = 4;
+  string feed_context = 5;
+  int32 catalog_id = 6; // [required=true]
+  int32 sub_sub_category_id = 7; // [(validate.rules).int32.gt = 0]
+  int32 product_id = 8;
+  RequestMetadata metadata = 9;
+}

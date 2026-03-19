@@ -1,0 +1,95 @@
+syntax = "proto3";
+
+package rviop;
+
+option java_package = "com.meesho.ml.rviop.client.grpc.dtos";
+option go_package = "./rv-iop";
+
+message GetRvSubstituteOrganicFeedResponse {
+  GetRecentlyViewedFeedResponse response = 1;
+}
+
+message GetRvSubstituteAdFeedResponse {
+  GetRecentlyViewedFeedResponse response = 1;
+}
+
+message GetRvSubstituteCtFeedResponse {
+  GetRecentlyViewedFeedResponse response = 1;
+}
+
+message GetCrossSellWidgetResponse {
+  GetCrossSellWidgetResponseData response = 1;
+}
+
+message GetCrossSellFeedResponse {
+  GetCrossSellFeedResponseData response = 1;
+}
+
+message GetRvInteractionsFeedResponse {
+  GetRecentlyViewedInteractionsFeedResponse response = 1;
+}
+
+message GetRvInteractionsWidgetResponse {
+  GetRecentlyViewedInteractionsWidgetResponse response = 1;
+}
+
+message GetCrossSellWidgetResponseData {
+  ResponseData data = 1;
+  Error error = 2;
+}
+
+message GetCrossSellFeedResponseData {
+  ResponseData data = 1;
+  Error error = 2;
+}
+
+message GetRecentlyViewedFeedResponse {
+  ResponseData data = 1;
+  Error error = 2;
+}
+
+message GetRecentlyViewedInteractionsFeedResponse {
+  ResponseData data = 1;
+  Error error = 2;
+}
+
+message GetRecentlyViewedInteractionsWidgetResponse {
+  ResponseData data = 1;
+  Error error = 2;
+}
+
+message ResponseData {
+  string tenantContext = 1;
+  bool hasNextEntity = 2;
+  repeated SimilarCandidatesResponse similarCandidates = 3;
+  repeated int32 slots = 4;
+}
+
+message SimilarCandidatesResponse {
+  int32 id = 1;
+  string cursor = 2;
+  string meta = 3;
+  string trackingId = 4;
+  MetaData metadata = 5;
+}
+
+message MetaData {
+  map<string, string> scores = 1;
+  string source = 2;
+  map<string, string> context = 3;
+  string subTenant = 4;
+  map<string, string> sse = 5;
+}
+
+message Error {
+  string message = 1;
+}
+
+message GetComponentsResponse {
+  repeated ComponentInfo components = 1;
+}
+
+message ComponentInfo {
+  string name = 1;
+  string source = 2;
+} 

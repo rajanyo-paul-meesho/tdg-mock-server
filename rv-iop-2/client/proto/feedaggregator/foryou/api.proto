@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.meesho.ml.feedaggregator.fyclient.grpc.services";
+option go_package = "../grpc";
+
+import "feedaggregator/foryou/request.proto";
+import "feedaggregator/foryou/response.proto";
+
+service FeedHandler {
+  rpc FetchForYouFeed (request.ForYouFeedRequest) returns (response.ForYouFeedResponse) {}
+}

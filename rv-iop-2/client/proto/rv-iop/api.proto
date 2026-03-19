@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package rviop;
+
+option go_package = "github.com/Meesho/rv-iop/client/grpc/rv-iop";
+
+option java_multiple_files = true;
+option java_package = "com.meesho.ml.rviop.client.grpc.services";
+
+import "rv-iop/request.proto";
+import "rv-iop/response.proto";
+import "google/protobuf/empty.proto";
+
+service RvIopService {
+  rpc FetchRvSubstituteExploitFeed (GetRvSubstituteOrganicFeedRequest) returns (GetRvSubstituteOrganicFeedResponse) {}
+  rpc FetchRvSubstituteExploreFeed (GetRvSubstituteCtFeedRequest) returns (GetRvSubstituteCtFeedResponse) {}
+  rpc FetchRvSubstituteAdFeed (GetRvSubstituteAdFeedRequest) returns (GetRvSubstituteAdFeedResponse) {}
+  rpc FetchCrossSellWidget (GetCrossSellWidgetRequest) returns (GetCrossSellWidgetResponse) {}
+  rpc FetchCrossSellFeed (GetCrossSellFeedRequest) returns (GetCrossSellFeedResponse) {}
+  rpc FetchRvInteractionsFeed (GetRvInteractionsFeedRequest) returns (GetRvInteractionsFeedResponse) {}
+  rpc FetchRvInteractionsWidget (GetRvInteractionsWidgetRequest) returns (GetRvInteractionsWidgetResponse) {}
+  rpc GetComponents (google.protobuf.Empty) returns (GetComponentsResponse) {}
+} 

@@ -1,0 +1,17 @@
+syntax = "proto3";
+import "clp-iop/request.proto";
+import "clp-iop/response.proto";
+import "google/protobuf/empty.proto";
+
+package clpiop;
+
+option java_multiple_files = true;
+option go_package = "../grpc/clp-iop";
+option java_package = "com.meesho.ml.clpiop.client.grpc.services";
+
+service ClpIopFeedService {
+  rpc GetClpExploitFeed(GetClpOrganicFeedRequest) returns (GetClpOrganicFeedResponse);
+  rpc GetClpExploreFeed(GetClpCtFeedRequest) returns (GetClpCtFeedResponse);
+  rpc GetClpAdFeed(GetClpAdFeedRequest) returns (GetClpAdFeedResponse);
+  rpc GetComponents(google.protobuf.Empty) returns (GetComponentsResponse);
+}
